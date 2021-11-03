@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewState"
+            type="barissaglam.cryptocurrencyapp.ui.detail.CoinDetailViewState" />
+
+        <variable
+            name="layoutViewState"
+            type="barissaglam.core.data.LayoutViewState" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/app_bg_color"
+            android:elevation="2dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imageView_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:selectableItemBackgroundBorderless"
+                    android:padding="@dimen/space_8"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewState.toolbarTitle}"
+                    android:textColor="?colorOnSurface"
+                    android:textSize="@dimen/text_16"
+                    app:layout_constraintBottom_toBottomOf="@id/imageView_back"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/imageView_back"
+                    tools:text="Bitcoin (BTC)" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.helper.widget.Layer
+                    android:id="@+id/layer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:constraint_referenced_ids="textView_description_title,textView_description,textView_statics,lineChart,imageView_icon_bg,imageView_icon"
+                    app:isVisible="@{layoutViewState.success}"
+                    tools:layout_editor_absoluteY="16dp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/space_16"
+                    android:includeFontPadding="false"
+                    android:text="@{viewState.priceText}"
+                    android:textColor="@color/color_text_main"
+                    android:textSize="@dimen/text_36"
+                    app:fontFamily="@font/medium"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="$24,634.06" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView_change"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_8"
+                    android:text="@{viewState.changeText}"
+                    android:textColor="@{viewState.getColor(context)}"
+                    android:textSize="@dimen/text_16"
+                    app:fontFamily="@font/semi_bold"
+                    app:layout_constraintStart_toEndOf="@+id/imageView_change"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_price"
+                    tools:text="- 6%" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imageView_change"
+                    android:layout_width="@dimen/pdp_value_icon_w"
+                    android:layout_height="@dimen/pdp_value_icon_h"
+                    android:src="@{viewState.getChangeIcon(context)}"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView_change"
+                    app:layout_constraintStart_toStartOf="@+id/textView_price"
+                    app:layout_constraintTop_toTopOf="@+id/textView_change"
+                    tools:src="@drawable/ic_red" />
+
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imageView_icon_bg"
+                    android:layout_width="@dimen/pdp_icon_bg_size"
+                    android:layout_height="@dimen/pdp_icon_bg_size"
+                    android:layout_marginEnd="@dimen/space_16"
+                    android:alpha=".2"
+                    android:src="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/textView_price"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearance.App.LargeComponent"
+                    app:tintFromStr="@{viewState.coin.color}" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imageView_icon"
+                    android:layout_width="@dimen/pdp_icon_size"
+                    android:layout_height="@dimen/pdp_icon_size"
+                    app:imageUrl="@{viewState.coin.iconUrl}"
+                    app:layout_constraintBottom_toBottomOf="@id/imageView_icon_bg"
+                    app:layout_constraintEnd_toEndOf="@id/imageView_icon_bg"
+                    app:layout_constraintStart_toStartOf="@id/imageView_icon_bg"
+                    app:layout_constraintTop_toTopOf="@id/imageView_icon_bg" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView_statics"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_8"
+                    android:ellipsize="marquee"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:paddingHorizontal="@dimen/text_16"
+                    android:singleLine="true"
+                    android:text="@{viewState.getStaticsText(context)}"
+                    android:textColor="@color/color_text_secondary"
+                    android:textSize="@dimen/text_16"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_change"
+                    app:selected="@{true}"
+                    tools:text="Here is statics" />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/lineChart"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="H,1:0.8"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_statics" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView_description_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/space_16"
+                    android:layout_marginTop="@dimen/space_8"
+                    android:text="@{@string/title_coin_description(viewState.coin.name)}"
+                    android:textColor="@color/color_text_main"
+                    app:fontFamily="@font/medium"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lineChart"
+                    tools:text="About of Bitcoin" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textView_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/space_16"
+                    android:layout_marginTop="@dimen/space_8"
+                    android:text="@{viewState.description}"
+                    android:textColor="@color/color_text_secondary"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_description_title"
+                    tools:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry." />
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/loading"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:isShimmerShow="@{layoutViewState.loading}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shimmer_auto_start="false"
+                    tools:visibility="gone">
+
+                    <barissaglam.cryptocurrencyapp.utils.TopCropImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:srcCompat="@drawable/ic_pdp_shimmer" />
+                </com.facebook.shimmer.ShimmerFrameLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

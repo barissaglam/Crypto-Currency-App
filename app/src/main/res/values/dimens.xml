@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_10">10sp</dimen>
+    <dimen name="text_11">11sp</dimen>
+    <dimen name="text_12">12sp</dimen>
+    <dimen name="text_13">13sp</dimen>
+    <dimen name="text_14">14sp</dimen>
+    <dimen name="text_16">16sp</dimen>
+    <dimen name="text_18">18sp</dimen>
+    <dimen name="text_24">24sp</dimen>
+    <dimen name="text_36">36sp</dimen>
+    <dimen name="text_48">48sp</dimen>
+    <dimen name="text_64">64sp</dimen>
+
+    <dimen name="space_2">2dp</dimen>
+    <dimen name="space_4">4dp</dimen>
+    <dimen name="space_8">8dp</dimen>
+    <dimen name="space_12">12dp</dimen>
+    <dimen name="space_16">16dp</dimen>
+    <dimen name="space_24">24dp</dimen>
+    <dimen name="space_32">32dp</dimen>
+
+    <dimen name="zero_dp">0dp</dimen>
+
+    <dimen name="pdp_value_icon_w">17dp</dimen>
+    <dimen name="pdp_value_icon_h">12dp</dimen>
+    <dimen name="pdp_icon_bg_size">50dp</dimen>
+    <dimen name="pdp_icon_size">35dp</dimen>
+    <dimen name="search_h">50dp</dimen>
+    <dimen name="item_coin_icon_bg_size">45dp</dimen>
+    <dimen name="item_coin_icon_size">30dp</dimen>
+</resources>

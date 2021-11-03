@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_64"
+            android:adjustViewBounds="true"
+            app:srcCompat="@drawable/image_error" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/errorTextTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_24"
+            android:gravity="center"
+            android:text="@string/something_went_wrong"
+            android:textColor="@color/error_title_color"
+            android:textSize="@dimen/text_24"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/errorText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_24"
+            android:layout_marginTop="@dimen/space_8"
+            android:gravity="center"
+            android:textColor="@color/error_description_color"
+            android:textSize="@dimen/text_16"
+            tools:text="Here is error description." />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/retry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_32"
+            android:layout_marginTop="16dp"
+            android:text="@string/retry"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+</layout>

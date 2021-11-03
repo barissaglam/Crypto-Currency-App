@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Crypto Currency</string>
+
+    <string name="title_market_cap">Market Cap:&#160;</string>
+    <string name="title_volume">Volume in 24h:&#160;</string>
+    <string name="title_available_supply">Available Supply:&#160;</string>
+    <string name="title_total_supply">Total Supply:&#160;</string>
+    <string name="hint_search">Search</string>
+    <string name="title_coin_description">About of %s</string>
+</resources>

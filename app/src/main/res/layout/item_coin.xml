@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewState"
+            type="barissaglam.cryptocurrencyapp.ui.home.CoinItemViewState" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:paddingHorizontal="@dimen/space_16"
+        android:paddingTop="@dimen/space_12">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageView_icon_bg"
+            android:layout_width="@dimen/item_coin_icon_bg_size"
+            android:layout_height="45dp"
+            android:alpha=".2"
+            android:src="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.App.LargeComponent"
+            app:tintFromStr="@{viewState.coin.color}" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView_icon"
+            android:layout_width="@dimen/item_coin_icon_size"
+            android:layout_height="30dp"
+            app:imageUrl="@{viewState.coin.iconUrl}"
+            app:layout_constraintBottom_toBottomOf="@id/imageView_icon_bg"
+            app:layout_constraintEnd_toEndOf="@id/imageView_icon_bg"
+            app:layout_constraintStart_toStartOf="@id/imageView_icon_bg"
+            app:layout_constraintTop_toTopOf="@id/imageView_icon_bg" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_16"
+            android:text="@{viewState.coin.name}"
+            android:textColor="@color/color_text_main"
+            android:textSize="@dimen/text_16"
+            app:fontFamily="@font/medium"
+            app:layout_constraintBottom_toTopOf="@id/textView_symbol"
+            app:layout_constraintStart_toEndOf="@id/imageView_icon_bg"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Etherium" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView_symbol"
+            android:layout_width="@dimen/zero_dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_16"
+            android:layout_marginTop="@dimen/space_4"
+            android:text="@{viewState.coin.symbol}"
+            android:textColor="@color/color_text_secondary"
+            android:textSize="@dimen/text_12"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView_icon_bg"
+            app:layout_constraintStart_toEndOf="@id/imageView_icon_bg"
+            app:layout_constraintTop_toBottomOf="@id/textView_name"
+            tools:text="ETC" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewState.priceText}"
+            android:textColor="@color/color_text_main"
+            android:textSize="@dimen/text_16"
+            app:fontFamily="@font/bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView_icon_bg"
+            tools:text="€ 5,694.40" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/space_4"
+            android:text="@{viewState.changeText}"
+            android:textColor="@{viewState.getChangeTextColor(context)}"
+            android:textSize="@dimen/text_12"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView_icon_bg"
+            app:layout_constraintEnd_toStartOf="@+id/imageView_change"
+            tools:text="- 6%" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@{viewState.getChangeIcon(context)}"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_change"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView_change"
+            tools:src="@drawable/ic_red" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_12"
+            app:dividerColor="@color/color_divider"
+            app:layout_constraintTop_toBottomOf="@id/imageView_icon_bg" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

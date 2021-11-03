@@ -1,0 +1,90 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-parcelize'
+    id "name.remal.check-dependency-updates" version "1.4.0"
+}
+
+android {
+    compileSdk(Configs.compileSdkVersion)
+    buildToolsVersion(Configs.buildToolsVersion)
+
+    defaultConfig {
+        applicationId(Configs.applicationId)
+        minSdkVersion(Configs.minSdkVersion)
+        targetSdkVersion(Configs.targetSdkVersion)
+        versionCode(Configs.versionCode)
+        versionName(Configs.versionName)
+
+        testInstrumentationRunner(Configs.testInstrumentationRunner)
+
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+        useIR = true
+    }
+    buildFeatures {
+        dataBinding true
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+        freeCompilerArgs += [
+                "-Xuse-experimental=androidx.compose.ui.ExperimentalComposeUiApi",
+                "-Xuse-experimental=com.google.accompanist.pager.ExperimentalPagerApi"]
+    }
+}
+
+dependencies {
+
+    implementation project(":core")
+    implementation project(":domain")
+    implementation project(":data")
+
+    implementation(Dependencies.kotlin)
+    implementation(Dependencies.coreKtx)
+    implementation(Dependencies.appCompat)
+    implementation(Dependencies.legacySupport)
+    implementation(Dependencies.coroutines)
+    implementation(Dependencies.navigationFragment)
+    implementation(Dependencies.navigationUI)
+    implementation(Dependencies.hilt)
+    implementation(Dependencies.inset)
+    implementation(Dependencies.pager)
+    implementation(Dependencies.retrofit)
+    implementation(Dependencies.okHttp)
+    implementation(Dependencies.moshi)
+    implementation(Dependencies.glide)
+    implementation(Dependencies.androidSvg)
+    implementation(Dependencies.facebookShimmer)
+    implementation(Dependencies.mpChart)
+    implementation(Dependencies.splashScreen)
+
+    kapt(Dependencies.glideCompiler)
+
+    debugImplementation(Dependencies.chuck)
+
+    kapt(Dependencies.hiltCompiler)
+
+    testImplementation(Dependencies.jUnit)
+
+    androidTestImplementation(Dependencies.jUnitExtension)
+    androidTestImplementation(Dependencies.espresso)
+}
