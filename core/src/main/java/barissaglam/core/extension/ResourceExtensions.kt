@@ -12,20 +12,29 @@ fun <T, R> Resource<T>.map(transform: (T) -> R): Resource<R> {
     }
 }
 
-fun <T> Flow<Resource<T>>.onSuccess(action: (T) -> Unit): Flow<Resource<T>> {
-    return transform { value ->
-        if (value is Resource.Success) {
-            action.invoke(value.data)
+fun <T> Flow<Resource<T>>.onLoading(action: () -> Unit): Flow<Resource<T>> {
+    return transform { resource ->
+        if (resource is Resource.Loading) {
+            action.invoke()
         }
-        emit(value)
+        emit(resource)
+    }
+}
+
+fun <T> Flow<Resource<T>>.onSuccess(action: (T) -> Unit): Flow<Resource<T>> {
+    return transform { resource ->
+        if (resource is Resource.Success) {
+            action.invoke(resource.data)
+        }
+        emit(resource)
     }
 }
 
 fun <T> Flow<Resource<T>>.onError(action: (Throwable) -> Unit): Flow<Resource<T>> {
-    return transform { value ->
-        if (value is Resource.Error) {
-            action.invoke(value.throwable)
+    return transform { resource ->
+        if (resource is Resource.Error) {
+            action.invoke(resource.throwable)
         }
-        emit(value)
+        emit(resource)
     }
 }

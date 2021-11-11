@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import barissaglam.cryptocurrencyapp.databinding.ItemCoinBinding
-import barissaglam.data.model.uimodel.Coin
+import barissaglam.domain.model.Coin
 
 class HomeAdapter(
     private val callback: HomeAdapterCallBack

@@ -4,7 +4,6 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id 'kotlin-parcelize'
-    id "name.remal.check-dependency-updates" version "1.4.0"
 }
 
 android {
@@ -36,10 +35,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
-        useIR = true
-    }
+
     buildFeatures {
         dataBinding true
     }
@@ -50,41 +46,63 @@ android {
                 "-Xuse-experimental=androidx.compose.ui.ExperimentalComposeUiApi",
                 "-Xuse-experimental=com.google.accompanist.pager.ExperimentalPagerApi"]
     }
+
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+            testLogging {
+                events "passed", "skipped", "failed"
+            }
+        }
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
+    implementation(
+            project(Modules.core),
+            project(Modules.domain),
+            project(Modules.data),
 
-    implementation project(":core")
-    implementation project(":domain")
-    implementation project(":data")
+            Dependencies.kotlin,
+            Dependencies.coreKtx,
+            Dependencies.appCompat,
+            Dependencies.legacySupport,
+            Dependencies.coroutines,
+            Dependencies.navigationFragment,
+            Dependencies.navigationUI,
+            Dependencies.hilt,
+            Dependencies.retrofit,
+            Dependencies.okHttp,
+            Dependencies.moshi,
+            Dependencies.glide,
+            Dependencies.androidSvg,
+            Dependencies.facebookShimmer,
+            Dependencies.mpChart,
+            Dependencies.splashScreen,
+            Dependencies.jUnitKtx
+    )
 
-    implementation(Dependencies.kotlin)
-    implementation(Dependencies.coreKtx)
-    implementation(Dependencies.appCompat)
-    implementation(Dependencies.legacySupport)
-    implementation(Dependencies.coroutines)
-    implementation(Dependencies.navigationFragment)
-    implementation(Dependencies.navigationUI)
-    implementation(Dependencies.hilt)
-    implementation(Dependencies.inset)
-    implementation(Dependencies.pager)
-    implementation(Dependencies.retrofit)
-    implementation(Dependencies.okHttp)
-    implementation(Dependencies.moshi)
-    implementation(Dependencies.glide)
-    implementation(Dependencies.androidSvg)
-    implementation(Dependencies.facebookShimmer)
-    implementation(Dependencies.mpChart)
-    implementation(Dependencies.splashScreen)
+    kapt(
+            Dependencies.glideCompiler,
+            Dependencies.hiltCompiler
+    )
 
-    kapt(Dependencies.glideCompiler)
+    testImplementation(
+            Dependencies.truth,
+            Dependencies.jUnit,
+            Dependencies.mockk,
+            Dependencies.robolectric,
+            Dependencies.jUnitJupiter,
+            Dependencies.jUnitJupiterApi
+    )
+
+    testRuntimeOnly(
+            Dependencies.jUnitJupiterEngine,
+            Dependencies.jUnitJupiterVintageEngine
+    )
 
     debugImplementation(Dependencies.chuck)
-
-    kapt(Dependencies.hiltCompiler)
-
-    testImplementation(Dependencies.jUnit)
-
-    androidTestImplementation(Dependencies.jUnitExtension)
-    androidTestImplementation(Dependencies.espresso)
 }

@@ -1,10 +1,10 @@
-package barissaglam.domain.mapper
+package barissaglam.data.mapper
 
 import barissaglam.core.data.Mapper
 import barissaglam.data.model.CoinModel
-import barissaglam.data.model.uimodel.AllTimeHigh
-import barissaglam.data.model.uimodel.Coin
-import barissaglam.data.model.uimodel.Supply
+import barissaglam.domain.model.AllTimeHigh
+import barissaglam.domain.model.Coin
+import barissaglam.domain.model.Supply
 import barissaglam.extensions.orFalse
 import barissaglam.extensions.orZero
 import barissaglam.extensions.toBigDecimalOrZero

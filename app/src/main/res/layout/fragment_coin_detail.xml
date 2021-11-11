@@ -10,8 +10,8 @@
             type="barissaglam.cryptocurrencyapp.ui.detail.CoinDetailViewState" />
 
         <variable
-            name="layoutViewState"
-            type="barissaglam.core.data.LayoutViewState" />
+            name="uiViewState"
+            type="barissaglam.cryptocurrencyapp.ui.detail.CoinDetailUiViewState" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -71,9 +71,8 @@
                     android:id="@+id/layer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:constraint_referenced_ids="textView_description_title,textView_description,textView_statics,lineChart,imageView_icon_bg,imageView_icon"
-                    app:isVisible="@{layoutViewState.success}"
-                    tools:layout_editor_absoluteY="16dp" />
+                    app:constraint_referenced_ids="imageView_icon_bg,textView_price,textView_change,imageView_change,textView_description_title,textView_description,textView_statics,lineChart,imageView_icon,flow_timePeriod"
+                    app:isVisible="@{uiViewState.showContent}" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/textView_price"
@@ -111,7 +110,6 @@
                     app:layout_constraintStart_toStartOf="@+id/textView_price"
                     app:layout_constraintTop_toTopOf="@+id/textView_change"
                     tools:src="@drawable/ic_red" />
-
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/imageView_icon_bg"
@@ -151,6 +149,42 @@
                     app:selected="@{true}"
                     tools:text="Here is statics" />
 
+                <androidx.constraintlayout.helper.widget.Flow
+                    android:id="@+id/flow_timePeriod"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/space_16"
+                    android:layout_marginTop="@dimen/space_16"
+                    app:constraint_referenced_ids="chip_24h,chip_7d,chip_30d"
+                    app:flow_horizontalGap="@dimen/space_8"
+                    app:flow_wrapMode="aligned"
+                    app:layout_constraintTop_toBottomOf="@id/textView_statics" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_24h"
+                    style="@style/TimePeriodChipStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:checked="@{viewState.chip24hChecked}"
+                    android:text="Daily" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_7d"
+                    style="@style/TimePeriodChipStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:checked="@{viewState.chip7dChecked}"
+                    android:text="Weekly" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_30d"
+                    style="@style/TimePeriodChipStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:checked="@{viewState.chip30dChecked}"
+                    android:text="Monthly" />
+
+
                 <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/lineChart"
                     android:layout_width="0dp"
@@ -158,14 +192,23 @@
                     app:layout_constraintDimensionRatio="H,1:0.8"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_statics" />
+                    app:layout_constraintTop_toBottomOf="@+id/flow_timePeriod" />
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminateTint="#df6a2e"
+                    app:isVisible="@{uiViewState.showProgress}"
+                    app:layout_constraintBottom_toBottomOf="@+id/lineChart"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/flow_timePeriod" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/textView_description_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/space_16"
-                    android:layout_marginTop="@dimen/space_8"
                     android:text="@{@string/title_coin_description(viewState.coin.name)}"
                     android:textColor="@color/color_text_main"
                     app:fontFamily="@font/medium"
@@ -179,6 +222,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/space_16"
                     android:layout_marginTop="@dimen/space_8"
+                    android:ellipsize="end"
+                    android:maxLines="4"
                     android:text="@{viewState.description}"
                     android:textColor="@color/color_text_secondary"
                     app:layout_constraintTop_toBottomOf="@+id/textView_description_title"
@@ -188,7 +233,7 @@
                     android:id="@+id/loading"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    app:isShimmerShow="@{layoutViewState.loading}"
+                    app:isShimmerShow="@{uiViewState.showShimmer    }"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:shimmer_auto_start="false"

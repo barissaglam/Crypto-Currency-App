@@ -10,7 +10,7 @@ import barissaglam.cryptocurrencyapp.utils.color
 import barissaglam.cryptocurrencyapp.utils.normal
 import barissaglam.cryptocurrencyapp.utils.plus
 import barissaglam.cryptocurrencyapp.utils.spannable
-import barissaglam.data.model.uimodel.Coin
+import barissaglam.domain.model.Coin
 import barissaglam.extensions.formatWithSuffix
 import barissaglam.extensions.isPositive
 import barissaglam.extensions.toCurrency
@@ -28,7 +28,8 @@ private const val ANALYTICS_SEPARATOR = " - "
 private const val LINE_WIDTH = 2F
 
 data class CoinDetailViewState(
-    val coin: Coin
+    val coin: Coin,
+    val timePeriod: TimePeriod = TimePeriod.DAILY
 ) {
     fun getLineData(context: Context): LineData {
         val entries = coin.sparkline.mapIndexed { index, sparkLine ->
@@ -106,5 +107,17 @@ data class CoinDetailViewState(
                 .plus(normal(context.getString(R.string.title_total_supply)))
                 .plus(color(color, bold(coin.supply.total.formatWithSuffix())))
         }
+    }
+
+    fun isChip24hChecked(): Boolean {
+        return timePeriod == TimePeriod.DAILY
+    }
+
+    fun isChip7dChecked(): Boolean {
+        return timePeriod == TimePeriod.WEEKLY
+    }
+
+    fun isChip30dChecked(): Boolean {
+        return timePeriod == TimePeriod.MONTHLY
     }
 }

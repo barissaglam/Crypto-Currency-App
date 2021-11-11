@@ -11,12 +11,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MySplash"
+        android:theme="@style/Theme.NewsApp"
         android:usesCleartextTraffic="true">
         <activity
             android:name="barissaglam.cryptocurrencyapp.ui.main.MainActivity"
             android:exported="true"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:theme="@style/Theme.MySplash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

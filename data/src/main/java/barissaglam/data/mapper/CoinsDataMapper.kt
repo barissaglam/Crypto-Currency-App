@@ -1,8 +1,8 @@
-package barissaglam.domain.mapper
+package barissaglam.data.mapper
 
 import barissaglam.core.data.Mapper
 import barissaglam.data.model.CoinsDataModel
-import barissaglam.data.model.uimodel.CoinsData
+import barissaglam.domain.model.CoinsData
 import javax.inject.Inject
 import javax.inject.Singleton
 

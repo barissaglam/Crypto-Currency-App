@@ -1,7 +1,7 @@
 package barissaglam.cryptocurrencyapp.ui.home
 
-import barissaglam.data.model.uimodel.Coin
-import barissaglam.data.model.uimodel.CoinsData
+import barissaglam.domain.model.Coin
+import barissaglam.domain.model.CoinsData
 
 data class HomeViewState(
     val coinData: CoinsData

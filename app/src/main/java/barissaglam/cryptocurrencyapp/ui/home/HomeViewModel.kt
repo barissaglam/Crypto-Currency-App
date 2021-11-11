@@ -2,10 +2,12 @@ package barissaglam.cryptocurrencyapp.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import barissaglam.core.extension.onSuccess
 import barissaglam.core.view.BaseViewModel
-import barissaglam.data.model.uimodel.CoinsData
+import barissaglam.domain.model.CoinsData
 import barissaglam.domain.usecase.CoinUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @HiltViewModel
@@ -13,8 +15,11 @@ class HomeViewModel @Inject constructor(
     private val coinUseCase: CoinUseCase,
 ) : BaseViewModel() {
 
-    private val _viewState = MutableLiveData<HomeViewState>()
-    val viewState: LiveData<HomeViewState> by ::_viewState
+    private val uiViewState = MutableLiveData<HomeUiViewState>()
+    val uiViewStateData: LiveData<HomeUiViewState> by ::uiViewState
+
+    private val viewState = MutableLiveData<HomeViewState>()
+    val viewStateData: LiveData<HomeViewState> by ::viewState
 
     init {
         getCoins()
@@ -23,17 +28,19 @@ class HomeViewModel @Inject constructor(
     private fun getCoins() {
         sendRequest(
             callFunc = { coinUseCase(Unit) },
-            retryFunc = { getCoins() }
-        ) { coinsData ->
-            updateCoinsData(coinsData)
-        }
+            retryFunc = ::getCoins
+        ).onSuccess { coinsData ->
+            publishCoinsData(coinsData)
+        }.onEach { resource ->
+            uiViewState.value = HomeUiViewState(resource)
+        }.launch()
     }
 
-    fun updateCoinsData(coinsData: CoinsData) {
-        _viewState.value?.let {
-            _viewState.value = it.copy(coinData = coinsData)
+    fun publishCoinsData(coinsData: CoinsData) {
+        viewState.value?.let {
+            viewState.value = it.copy(coinData = coinsData)
         } ?: run {
-            _viewState.value = HomeViewState(coinData = coinsData)
+            viewState.value = HomeViewState(coinData = coinsData)
         }
     }
 }

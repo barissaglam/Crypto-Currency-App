@@ -17,9 +17,8 @@ fun String?.toDoubleOrZero(): Double {
 }
 
 fun String?.asColor(): Int {
-    val color = this
     return try {
-        Color.parseColor(color)
+        Color.parseColor(this)
     } catch (e: Exception) {
         Color.BLUE
     }

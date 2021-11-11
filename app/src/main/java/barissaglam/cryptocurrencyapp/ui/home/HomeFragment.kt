@@ -19,8 +19,8 @@ import barissaglam.cryptocurrencyapp.ui.home.service.CoinsUpdateScope
 import barissaglam.cryptocurrencyapp.ui.home.service.CoinsUpdateService
 import barissaglam.cryptocurrencyapp.utils.BundleKeys.CoinDetail
 import barissaglam.cryptocurrencyapp.utils.BundleKeys.CoinList
-import barissaglam.data.model.uimodel.Coin
-import barissaglam.data.model.uimodel.CoinsData
+import barissaglam.domain.model.Coin
+import barissaglam.domain.model.CoinsData
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -34,7 +34,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home), 
     private val updateCoinsReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             intent?.getParcelableExtra<CoinsData>(CoinList.KEY_COINS)?.let { coinsData ->
-                viewModel.updateCoinsData(coinsData)
+                viewModel.publishCoinsData(coinsData)
             }
         }
     }
@@ -47,10 +47,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home), 
 
     private fun observeViewModelFields() {
         with(viewModel) {
-            observe(layoutViewState) { layoutViewState ->
-                binding.layoutViewState = layoutViewState
+            observe(uiViewStateData) { uiViewState ->
+                binding.uiViewState = uiViewState
             }
-            observe(viewState) { viewState ->
+            observe(viewStateData) { viewState ->
                 coinsAdapter.submitList(viewState.getItems())
             }
         }

@@ -1,11 +1,11 @@
 package barissaglam.data.api
 
-import barissaglam.data.model.BaseResponse
+import barissaglam.core.data.BaseResponse
 import barissaglam.data.model.CoinDetailDataModel
 import barissaglam.data.model.CoinsDataModel
-import barissaglam.data.model.ExchangesDataModel
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface RestApi {
 
@@ -14,15 +14,12 @@ interface RestApi {
 
     @GET(COIN_DETAIL)
     suspend fun getCoinDetail(
-        @Path("uuid") uuid: String
+        @Path("uuid") uuid: String,
+        @Query("timePeriod") timePeriod: String
     ): BaseResponse<CoinDetailDataModel>
-
-    @GET(EXCHANGES)
-    suspend fun getExchanges(): BaseResponse<ExchangesDataModel>
 
     private companion object EndPoints {
         const val COINS = "coins"
         const val COIN_DETAIL = "coin/{uuid}"
-        const val EXCHANGES = "exchanges"
     }
 }

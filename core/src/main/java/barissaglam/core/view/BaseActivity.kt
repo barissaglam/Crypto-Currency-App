@@ -50,7 +50,7 @@ abstract class BaseActivity<DB : ViewDataBinding>(@LayoutRes private val layoutR
             rootBinding.error.addView(root)
             errorText.text = baseError.throwable.getErrorMessage(root.context)
             retry.setOnClickListener {
-                baseError.retryFunc?.invoke()
+                baseError.retryFunc()
                 hideError()
             }
         }

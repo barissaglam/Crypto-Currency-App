@@ -1,8 +1,8 @@
-package barissaglam.domain.mapper
+package barissaglam.data.mapper
 
 import barissaglam.core.data.Mapper
 import barissaglam.data.model.StatsModel
-import barissaglam.data.model.uimodel.Stats
+import barissaglam.domain.model.Stats
 import barissaglam.extensions.orZero
 import barissaglam.extensions.toBigDecimalOrZero
 import javax.inject.Inject

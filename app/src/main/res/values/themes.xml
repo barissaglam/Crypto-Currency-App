@@ -11,7 +11,7 @@
     <style name="Theme.NewsApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimaryVariant">@color/purple_500</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="fontFamily">@font/regular</item>
 
@@ -37,4 +37,15 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
     </style>
+
+    <style name="TimePeriodChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/selector_time_period_chip</item>
+        <item name="android:textColor">@color/selector_time_period_text</item>
+        <item name="android:checkable">true</item>
+        <item name="android:textSize">@dimen/text_12</item>
+        <item name="android:textAlignment">center</item>
+        <item name="checkedIcon">@null</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.App.SmallComponent</item>
+    </style>
+
 </resources>

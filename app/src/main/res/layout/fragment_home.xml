@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="layoutViewState"
-            type="barissaglam.core.data.LayoutViewState" />
+            name="uiViewState"
+            type="barissaglam.cryptocurrencyapp.ui.home.HomeUiViewState" />
     </data>
 
     <FrameLayout
@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:isVisible="@{layoutViewState.success}">
+            app:isVisible="@{uiViewState.showContent}">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardView_toolbar"
@@ -89,7 +89,7 @@
             android:id="@+id/loading"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:isShimmerShow="@{layoutViewState.loading}"
+            app:isShimmerShow="@{uiViewState.showShimmer}"
             app:shimmer_auto_start="false"
             tools:visibility="gone">
 

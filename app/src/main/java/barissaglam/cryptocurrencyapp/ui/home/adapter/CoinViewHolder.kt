@@ -3,7 +3,7 @@ package barissaglam.cryptocurrencyapp.ui.home.adapter
 import barissaglam.core.adapter.BaseViewHolder
 import barissaglam.cryptocurrencyapp.databinding.ItemCoinBinding
 import barissaglam.cryptocurrencyapp.ui.home.CoinItemViewState
-import barissaglam.data.model.uimodel.Coin
+import barissaglam.domain.model.Coin
 
 class CoinViewHolder(
     private val binding: ItemCoinBinding,

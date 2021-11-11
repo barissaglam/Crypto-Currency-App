@@ -20,7 +20,7 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageView_icon_bg"
             android:layout_width="@dimen/item_coin_icon_bg_size"
-            android:layout_height="45dp"
+            android:layout_height="@dimen/item_coin_icon_bg_size"
             android:alpha=".2"
             android:src="@color/white"
             app:layout_constraintStart_toStartOf="parent"
