@@ -25,7 +25,6 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".ui.home.service.CoinsUpdateService" />
     </application>
 
 </manifest>

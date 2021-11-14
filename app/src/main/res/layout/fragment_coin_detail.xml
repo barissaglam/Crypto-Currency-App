@@ -10,8 +10,8 @@
             type="barissaglam.cryptocurrencyapp.ui.detail.CoinDetailViewState" />
 
         <variable
-            name="uiViewState"
-            type="barissaglam.cryptocurrencyapp.ui.detail.CoinDetailUiViewState" />
+            name="uiState"
+            type="barissaglam.cryptocurrencyapp.ui.detail.CoinDetailUiState" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -72,7 +72,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:constraint_referenced_ids="imageView_icon_bg,textView_price,textView_change,imageView_change,textView_description_title,textView_description,textView_statics,lineChart,imageView_icon,flow_timePeriod"
-                    app:isVisible="@{uiViewState.showContent}" />
+                    app:isVisible="@{uiState.showContent}" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/textView_price"
@@ -166,7 +166,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:checked="@{viewState.chip24hChecked}"
-                    android:text="Daily" />
+                    android:text="@string/chip_text_daily" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_7d"
@@ -174,7 +174,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:checked="@{viewState.chip7dChecked}"
-                    android:text="Weekly" />
+                    android:text="@string/chip_text_weekly" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_30d"
@@ -182,7 +182,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:checked="@{viewState.chip30dChecked}"
-                    android:text="Monthly" />
+                    android:text="@string/chip_text_monthly" />
 
 
                 <com.github.mikephil.charting.charts.LineChart
@@ -198,7 +198,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:indeterminateTint="#df6a2e"
-                    app:isVisible="@{uiViewState.showProgress}"
+                    app:isVisible="@{uiState.showProgress}"
                     app:layout_constraintBottom_toBottomOf="@+id/lineChart"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -233,7 +233,7 @@
                     android:id="@+id/loading"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    app:isShimmerShow="@{uiViewState.showShimmer    }"
+                    app:isShimmerShow="@{uiState.showShimmer}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:shimmer_auto_start="false"

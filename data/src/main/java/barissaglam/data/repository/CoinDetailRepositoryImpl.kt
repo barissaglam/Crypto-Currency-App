@@ -14,8 +14,8 @@ class CoinDetailRepositoryImpl @Inject constructor(
 ) : CoinDetailRepository, BaseRepository() {
 
     override fun getCoinDetail(uuid: String, timePeriod: String) = callApi { api.getCoinDetail(uuid, timePeriod) }
-        .map { resource ->
-            resource.map { response ->
+        .map { apiResult ->
+            apiResult.map { response ->
                 coinMapper.toMapUiModel(response.data.coin)
             }
         }

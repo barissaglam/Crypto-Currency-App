@@ -8,10 +8,6 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.flowWithLifecycle
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
 abstract class BaseFragment<DB : ViewDataBinding>(@LayoutRes private val layoutRes: Int) : Fragment(layoutRes) {
     lateinit var binding: DB
@@ -31,10 +27,8 @@ abstract class BaseFragment<DB : ViewDataBinding>(@LayoutRes private val layoutR
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        lifecycleScope.launch {
-            viewModel.error.flowWithLifecycle(lifecycle).collect { baseError ->
-                (activity as? BaseActivity<*>)?.showError(baseError)
-            }
+        viewModel.errorData.observe(viewLifecycleOwner) { baseError ->
+            (activity as? BaseActivity<*>)?.showError(baseError)
         }
     }
 

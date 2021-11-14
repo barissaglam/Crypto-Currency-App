@@ -5,7 +5,6 @@ object Dependencies {
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompatVersion}"
     const val material = "com.google.android.material:material:${Versions.materialVersion}"
     const val legacySupport = "androidx.legacy:legacy-support-v4:${Versions.legacySupportVersion}"
-    const val jUnit = "junit:junit:${Versions.jUnitVersion}"
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutinesVersion}"
     const val hilt = "com.google.dagger:hilt-android:${Versions.hiltVersion}"
     const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hiltVersion}"
@@ -30,9 +29,10 @@ object Dependencies {
     const val truth = "com.google.truth:truth:${Versions.truthVersion}"
     const val jUnitKtx = "androidx.test.ext:junit-ktx:${Versions.jUnitKtxVersion}"
     const val robolectric = "org.robolectric:robolectric:${Versions.robolectricVersion}"
-    const val jUnitJupiter = "org.junit.jupiter:junit-jupiter:${Versions.jUnit5Versions}"
-    const val jUnitJupiterApi = "org.junit.jupiter:junit-jupiter-api:${Versions.jUnit5Versions}"
-    const val jUnitJupiterEngine = "org.junit.jupiter:junit-jupiter-engine:${Versions.jUnit5Versions}"
-    const val jUnitJupiterVintageEngine = "org.junit.vintage:junit-vintage-engine:${Versions.jUnit5Versions}"
-
+    const val jUnitJupiter = "org.junit.jupiter:junit-jupiter:${Versions.jUnit5Version}"
+    const val jUnitJupiterApi = "org.junit.jupiter:junit-jupiter-api:${Versions.jUnit5Version}"
+    const val jUnitJupiterEngine = "org.junit.jupiter:junit-jupiter-engine:${Versions.jUnit5Version}"
+    const val jUnitJupiterVintageEngine = "org.junit.vintage:junit-vintage-engine:${Versions.jUnit5Version}"
+    const val coroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutinesTestVersion}"
+    const val archCoreTesting = "androidx.arch.core:core-testing:${Versions.archCoreTestingVersion}"
 }

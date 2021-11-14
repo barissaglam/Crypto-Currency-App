@@ -8,9 +8,13 @@ import barissaglam.core.view.BaseFragment
 import barissaglam.cryptocurrencyapp.R
 import barissaglam.cryptocurrencyapp.databinding.FragmentCoinDetailBinding
 import barissaglam.cryptocurrencyapp.extensions.observe
-import barissaglam.cryptocurrencyapp.ui.detail.TimePeriod.DAILY
-import barissaglam.cryptocurrencyapp.ui.detail.TimePeriod.MONTHLY
-import barissaglam.cryptocurrencyapp.ui.detail.TimePeriod.WEEKLY
+import barissaglam.cryptocurrencyapp.ui.detail.data.DetailLoadingType
+import barissaglam.cryptocurrencyapp.ui.detail.data.DetailLoadingType.PROGRESS
+import barissaglam.cryptocurrencyapp.ui.detail.data.DetailLoadingType.SHIMMER
+import barissaglam.cryptocurrencyapp.ui.detail.data.TimePeriod
+import barissaglam.cryptocurrencyapp.ui.detail.data.TimePeriod.DAILY
+import barissaglam.cryptocurrencyapp.ui.detail.data.TimePeriod.MONTHLY
+import barissaglam.cryptocurrencyapp.ui.detail.data.TimePeriod.WEEKLY
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,10 +30,17 @@ class CoinDetailFragment : BaseFragment<FragmentCoinDetailBinding>(R.layout.frag
         observeViewModelFields()
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (savedInstanceState == null) {
+            getCoinDetail(DAILY, SHIMMER)
+        }
+    }
+
     private fun observeViewModelFields() {
         with(viewModel) {
-            observe(uiViewStateData) { uiViewState ->
-                binding.uiViewState = uiViewState
+            observe(uiStateData) { uiState ->
+                binding.uiState = uiState
                 binding.executePendingBindings()
             }
             observe(viewStateData) { detailViewState ->
@@ -49,8 +60,8 @@ class CoinDetailFragment : BaseFragment<FragmentCoinDetailBinding>(R.layout.frag
         }
     }
 
-    private fun getCoinDetail(timePeriod: TimePeriod) {
-        viewModel.getCoinDetail(timePeriod, DetailLoadingType.Progress)
+    private fun getCoinDetail(timePeriod: TimePeriod, loadingType: DetailLoadingType = PROGRESS) {
+        viewModel.getCoinDetail(timePeriod, loadingType)
     }
 
     private fun setUpLineChart() {

@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable
 import android.text.SpannableString
 import androidx.core.content.ContextCompat
 import barissaglam.cryptocurrencyapp.R
+import barissaglam.cryptocurrencyapp.ui.detail.data.TimePeriod
 import barissaglam.cryptocurrencyapp.utils.bold
 import barissaglam.cryptocurrencyapp.utils.color
 import barissaglam.cryptocurrencyapp.utils.normal

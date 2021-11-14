@@ -6,14 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.allViews
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.lifecycle.flowWithLifecycle
-import androidx.lifecycle.lifecycleScope
 import barissaglam.core.R
 import barissaglam.core.databinding.ActivityBaseBinding
 import barissaglam.core.databinding.LayoutErrorBinding
 import barissaglam.core.extension.getErrorMessage
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
 abstract class BaseActivity<DB : ViewDataBinding>(@LayoutRes private val layoutRes: Int) : AppCompatActivity() {
     abstract val viewModel: BaseViewModel?
@@ -38,10 +34,8 @@ abstract class BaseActivity<DB : ViewDataBinding>(@LayoutRes private val layoutR
         binding.lifecycleOwner = this
         rootBinding.lifecycleOwner = this
 
-        lifecycleScope.launch {
-            viewModel?.error?.flowWithLifecycle(lifecycle)?.collect { baseError ->
-                showError(baseError)
-            }
+        viewModel?.errorData?.observe(this) { baseError ->
+            showError(baseError)
         }
     }
 

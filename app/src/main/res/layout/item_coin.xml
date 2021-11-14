@@ -102,12 +102,12 @@
             app:layout_constraintTop_toTopOf="@+id/textView_change"
             tools:src="@drawable/ic_red" />
 
-        <com.google.android.material.divider.MaterialDivider
+        <View
             android:id="@+id/divider"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/divider_height"
             android:layout_marginTop="@dimen/space_12"
-            app:dividerColor="@color/color_divider"
+            android:background="@color/color_divider"
             app:layout_constraintTop_toBottomOf="@id/imageView_icon_bg" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

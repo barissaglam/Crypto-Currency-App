@@ -7,11 +7,11 @@ import kotlinx.coroutines.flow.onStart
 
 abstract class BaseRepository {
 
-    fun <T> callApi(block: suspend () -> T): Flow<Resource<T>> {
+    fun <T> callApi(block: suspend () -> T): Flow<ApiResult<T>> {
         return flow {
-            emit(Resource.Success(block.invoke()) as Resource<T>)
+            emit(ApiResult.Success(block.invoke()) as ApiResult<T>)
         }
-            .onStart { emit(Resource.Loading) }
-            .catch { throwable -> emit(Resource.Error(throwable)) }
+            .onStart { emit(ApiResult.Loading) }
+            .catch { throwable -> emit(ApiResult.Error(throwable)) }
     }
 }

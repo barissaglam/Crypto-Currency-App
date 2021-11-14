@@ -7,4 +7,7 @@
     <string name="title_total_supply">Total Supply:&#160;</string>
     <string name="hint_search">Search</string>
     <string name="title_coin_description">About of %s</string>
+    <string name="chip_text_daily">Daily</string>
+    <string name="chip_text_weekly">Weekly</string>
+    <string name="chip_text_monthly">Monthly</string>
 </resources>

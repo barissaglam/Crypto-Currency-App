@@ -7,7 +7,7 @@
 
         <variable
             name="uiViewState"
-            type="barissaglam.cryptocurrencyapp.ui.home.HomeUiViewState" />
+            type="barissaglam.cryptocurrencyapp.ui.home.HomeUiState" />
     </data>
 
     <FrameLayout
