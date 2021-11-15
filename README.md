@@ -14,9 +14,16 @@ Coin Stalker App is an android application that displays current crypto currency
 - [JUnit5](https://junit.org/junit5/docs/current/user-guide/) a unit test framework
 - [Truth](https://truth.dev) for performing assertions in tests
 - [Mockk](https://mockk.io) for mock objects in tests
+- Modular Structure(app, core, data, domain)
+- Dependency Management Using buildSrc + Kotlin DSL
 
 # Screenshot
 | Page  | Light Mode                                        | Dark Mode |
 |-------|---------------------------------------------------|------------------------------------------|
 | Home | <img src="art/home-light.png" width="250"> |<img src="art/home-dark.png" width="250"> |
 | Detail | <img src="art/detail-light.png" width="250"> |<img src="art/detail-dark.png" width="250"> |
+
+# Others
+- App logo from [Freepik](https://www.freepik.com/free-vector/gradient-c-logo-template-collection_13403316.htm#page=1&query=c%20logo&position=0&from_view=search)
+- Error page image from [Freepik](https://www.freepik.com/free-vector/feeling-sorry-concept-illustration_10117948.htm#page=1&query=feeling%20sorry&position=0&from_view=search)
+- API is [CoinRanking](https://developers.coinranking.com)
