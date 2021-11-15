@@ -18,5 +18,5 @@ Coin Stalker App is an android application that displays current crypto currency
 # Screenshot
 | Page  | Light Mode                                        | Dark Mode |
 |-------|---------------------------------------------------|------------------------------------------|
-| Home | <img src="art/home-light.png" width="300"> |<img src="art/home-dark.png" width="300"> |
-| Detail | <img src="art/detail-light.png" width="300"> |<img src="art/detail-dark.png" width="300"> |
+| Home | <img src="art/home-light.png" width="250"> |<img src="art/home-dark.png" width="250"> |
+| Detail | <img src="art/detail-light.png" width="250"> |<img src="art/detail-dark.png" width="250"> |
