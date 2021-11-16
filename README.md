@@ -22,6 +22,17 @@ Coin Stalker App is an android application that displays current crypto currency
 - [Detekt](https://detekt.github.io/detekt/gradle.html) a static code analysis tool for the Kotlin programming language.
 - [Version Check](https://github.com/ben-manes/gradle-versions-plugin) provides a task to determine which dependencies have updates.
 
+# Code Quality Checks
+
+  #### Run detekt locally
+  Use `./gradlew detekt`
+  
+  #### Run ktlint locally
+  Use `./gradlew ktlint`
+ 
+  #### Run ktlint formatter locally
+  Use `./gradlew ktlintFormat`
+
 # Screenshot
 | Page  | Light Mode                                        | Dark Mode |
 |-------|---------------------------------------------------|------------------------------------------|
