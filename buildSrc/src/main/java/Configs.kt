@@ -1,4 +1,5 @@
 object Configs {
+
     const val compileSdkVersion = 31
     const val buildToolsVersion = "30.0.3"
     const val applicationId = "barissaglam.cryptocurrencyapp"

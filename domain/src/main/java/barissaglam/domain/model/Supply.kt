@@ -8,5 +8,5 @@ import java.math.BigDecimal
 class Supply(
     val confirmed: Boolean,
     val total: BigDecimal,
-    val circulating: BigDecimal,
+    val circulating: BigDecimal
 ) : Parcelable

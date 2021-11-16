@@ -8,5 +8,5 @@ class CoinsDataModel(
     val stats: StatsModel? = null,
 
     @field:Json(name = "coins")
-    val coins: List<CoinModel>? = null,
+    val coins: List<CoinModel>? = null
 )

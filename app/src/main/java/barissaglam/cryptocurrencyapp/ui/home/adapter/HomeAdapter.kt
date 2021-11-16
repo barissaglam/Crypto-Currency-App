@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import barissaglam.cryptocurrencyapp.databinding.ItemCoinBinding
 import barissaglam.domain.model.Coin
-
 class HomeAdapter(
     private val callback: HomeAdapterCallBack
 ) : ListAdapter<Coin, CoinViewHolder>(
@@ -26,7 +25,6 @@ class HomeAdapter(
         holder.bind(getItem(position))
     }
 
-
     private class AdapterItemDiffCallback<T : Coin> : DiffUtil.ItemCallback<T>() {
 
         override fun areItemsTheSame(oldItem: T, newItem: T): Boolean {
@@ -38,5 +36,4 @@ class HomeAdapter(
             return oldItem == newItem
         }
     }
-
 }

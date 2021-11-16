@@ -29,7 +29,6 @@ abstract class BaseViewModel : ViewModel() {
         error.postValue(BaseError(throwable = throwable, retryFunc = retryFunc))
     }
 
-
     data class BaseError(
         val throwable: Throwable,
         val retryFunc: () -> Unit
@@ -38,5 +37,4 @@ abstract class BaseViewModel : ViewModel() {
     fun <T> Flow<ApiResult<T>>.launch() {
         launchIn(viewModelScope)
     }
-
 }

@@ -5,6 +5,7 @@ import barissaglam.core.adapter.AdapterItem
 import kotlinx.parcelize.Parcelize
 import java.math.BigDecimal
 
+@Suppress("LongParameterList")
 @Parcelize
 class Coin(
     override val uuid: String,
@@ -23,5 +24,5 @@ class Coin(
     val sparkline: List<BigDecimal>,
     val allTimeHigh: AllTimeHigh,
     val coinRankingUrl: String,
-    val volume24h: BigDecimal,
+    val volume24h: BigDecimal
 ) : Parcelable, AdapterItem

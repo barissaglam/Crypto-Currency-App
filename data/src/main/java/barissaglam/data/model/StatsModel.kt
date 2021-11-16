@@ -20,5 +20,5 @@ class StatsModel(
     val totalMarketCap: String? = null,
 
     @field:Json(name = "total24hVolume")
-    val total24hVolume: String? = null,
+    val total24hVolume: String? = null
 )

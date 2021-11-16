@@ -27,6 +27,7 @@ fun BigDecimal.formatWithSuffix(): String = withSuffix(this.toLong())
 
 fun BigDecimal.toCurrencyWithSuffix(): String = withSuffix(this.toLong())
 
+@Suppress("MagicNumber")
 private fun withSuffix(count: Long): String {
     if (count < 1000) return "" + count
     val exp = (ln(count.toDouble()) / ln(1000.0)).toInt()

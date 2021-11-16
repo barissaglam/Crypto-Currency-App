@@ -25,6 +25,7 @@ object Dependencies {
     const val mpChart = "com.github.PhilJay:MPAndroidChart:${Versions.mpChartVersion}"
     const val splashScreen = "androidx.core:core-splashscreen:${Versions.splashScreenVersion}"
     const val javaxInject = "javax.inject:javax.inject:${Versions.javaxInjectionVersion}"
+    const val ktlint = "com.pinterest:ktlint:${Versions.ktlintVersion}"
     const val mockk = "io.mockk:mockk:${Versions.mockkVersion}"
     const val truth = "com.google.truth:truth:${Versions.truthVersion}"
     const val jUnitKtx = "androidx.test.ext:junit-ktx:${Versions.jUnitKtxVersion}"

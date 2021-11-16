@@ -10,13 +10,14 @@ object Versions {
     const val navigationVersion = "2.3.5"
     const val hiltVersion = "2.37"
     const val fragmentKtxVersion = "1.3.6"
-    const val gradleVersion = "7.1.0-alpha02"
     const val retrofitVersion = "2.9.0"
     const val okHttpVersion = "4.9.2"
     const val moshiVersion = "2.9.0"
     const val chuckVersion = "1.1.0"
     const val customViewVersion = "1.1.0"
     const val javaxInjectionVersion = "1"
+    const val ktlintVersion = "0.43.0"
+    const val detektVersion = "1.18.1"
     const val glideVersion = "4.12.0"
     const val recyclerViewVersion = "1.2.1"
     const val androidSvgVersion = "1.4"
@@ -31,6 +32,4 @@ object Versions {
     const val coroutinesTestVersion = "1.5.2"
     const val archCoreTestingVersion = "2.1.0"
 
-    const val ktLintVersion = "10.2.0"
-    const val versionCheckerVersion = "0.39.0"
 }

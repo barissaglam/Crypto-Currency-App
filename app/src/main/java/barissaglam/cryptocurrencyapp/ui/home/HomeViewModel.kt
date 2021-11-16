@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val coinUseCase: CoinUseCase,
+    private val coinUseCase: CoinUseCase
 ) : BaseViewModel() {
 
     private val uiState = MutableLiveData<HomeUiState>()

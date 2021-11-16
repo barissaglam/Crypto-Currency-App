@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class CoinDetailUseCase @Inject constructor(
-    private val repository: CoinDetailRepository,
+    private val repository: CoinDetailRepository
 ) : BaseUseCase<CoinDetailUseCase.Params, Coin>() {
 
     override fun execute(parameters: Params): Flow<ApiResult<Coin>> {

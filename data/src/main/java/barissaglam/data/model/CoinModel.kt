@@ -2,6 +2,7 @@ package barissaglam.data.model
 
 import com.squareup.moshi.Json
 
+@Suppress("LongParameterList")
 class CoinModel(
 
     @field:Json(name = "uuid")
@@ -56,5 +57,5 @@ class CoinModel(
     val coinRankingUrl: String? = null,
 
     @field:Json(name = "24hVolume")
-    val volume24h: String? = null,
+    val volume24h: String? = null
 )

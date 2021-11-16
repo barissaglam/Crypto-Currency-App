@@ -11,5 +11,5 @@ class SupplyModel(
     val total: String? = null,
 
     @field:Json(name = "circulating")
-    val circulating: String? = null,
+    val circulating: String? = null
 )

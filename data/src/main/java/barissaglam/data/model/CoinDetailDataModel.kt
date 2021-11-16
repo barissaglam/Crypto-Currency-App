@@ -5,5 +5,5 @@ import com.squareup.moshi.Json
 class CoinDetailDataModel(
 
     @field:Json(name = "coin")
-    val coin: CoinModel? = null,
+    val coin: CoinModel? = null
 )

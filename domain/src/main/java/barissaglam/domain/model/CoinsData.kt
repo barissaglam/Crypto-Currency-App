@@ -6,5 +6,5 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 class CoinsData(
     val stats: Stats,
-    val coins: List<Coin>,
+    val coins: List<Coin>
 ) : Parcelable

@@ -21,12 +21,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home), 
     override val viewModel: HomeViewModel by viewModels()
     private val coinsAdapter: HomeAdapter = HomeAdapter(this)
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpViews()
         observeViewModelFields()
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
