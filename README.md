@@ -17,6 +17,11 @@ Coin Stalker App is an android application that displays current crypto currency
 - Modular Structure(app, core, data, domain)
 - Dependency Management Using buildSrc + Kotlin DSL
 
+# Plugins
+- [Ktlint](https://github.com/JLLeitschuh/ktlint-gradle) an anti-bikeshedding Kotlin linter with built-in formatter
+- [Detekt](https://detekt.github.io/detekt/gradle.html) a static code analysis tool for the Kotlin programming language.
+- [Version Check](https://github.com/ben-manes/gradle-versions-plugin) provides a task to determine which dependencies have updates.
+
 # Screenshot
 | Page  | Light Mode                                        | Dark Mode |
 |-------|---------------------------------------------------|------------------------------------------|
