@@ -1,5 +1,6 @@
 package plugins
 
+import Libs
 import Versions
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektPlugin
@@ -7,8 +8,13 @@ import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 
 apply<DetektPlugin>()
 
+plugins {
+    id("io.gitlab.arturbosch.detekt")
+}
+
 configure<DetektExtension> {
-    toolVersion = Versions.detektVersion
+    autoCorrect = true
+    toolVersion = Versions.detekt
     parallel = false
     source = files(
         "src/main/kotlin",
@@ -26,6 +32,10 @@ configure<DetektExtension> {
             destination = file("${project.buildDir}/detekt/reports/detekt/detekt-report.html")
         }
     }
+}
+
+dependencies {
+    detektPlugins(Libs.Others.detektFormatter)
 }
 
 tasks.withType<Detekt>().configureEach {

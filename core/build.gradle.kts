@@ -42,14 +42,16 @@ android {
 dependencies {
 
     api(project(Modules.extensions))
-    api(Dependencies.javaxInject)
+    api(Libs.Others.javaxInject)
 
-    implementation(Dependencies.fragmentKtx)
-    implementation(Dependencies.appCompat)
-    implementation(Dependencies.lifecycleRuntime)
-    implementation(Dependencies.coroutines)
-    implementation(Dependencies.coreKtx)
-    implementation(Dependencies.customView)
-    implementation(Dependencies.recyclerView)
-    implementation(Dependencies.material)
+    implementation(Libs.AndroidX.fragmentKtx)
+    implementation(Libs.AndroidX.appCompat)
+    implementation(Libs.AndroidX.lifecycleRuntime)
+    implementation(Libs.AndroidX.coreKtx)
+    implementation(Libs.AndroidX.customView)
+    implementation(Libs.AndroidX.recyclerView)
+
+    implementation(Libs.Coroutines.coroutines)
+
+    implementation(Libs.Google.material)
 }

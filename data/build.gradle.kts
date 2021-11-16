@@ -40,10 +40,10 @@ dependencies {
     implementation(project(Modules.domain))
     implementation(project(Modules.core))
 
-    implementation(Dependencies.retrofit)
-    implementation(Dependencies.okHttp)
-    implementation(Dependencies.moshi)
-    implementation(Dependencies.hilt)
+    implementation(Libs.Network.retrofit)
+    implementation(Libs.Network.okHttp)
+    implementation(Libs.Network.moshi)
 
-    kapt(Dependencies.hiltCompiler)
+    implementation(Libs.Google.hilt)
+    kapt(Libs.Google.hiltCompiler)
 }
