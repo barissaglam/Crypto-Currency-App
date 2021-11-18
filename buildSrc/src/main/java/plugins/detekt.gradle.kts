@@ -14,7 +14,7 @@ plugins {
 
 configure<DetektExtension> {
     autoCorrect = true
-    toolVersion = Versions.detekt
+    toolVersion = Versions.Others.DETEKT
     parallel = false
     source = files(
         "src/main/kotlin",
@@ -35,7 +35,7 @@ configure<DetektExtension> {
 }
 
 dependencies {
-    detektPlugins(Libs.Others.detektFormatter)
+    detektPlugins(Libs.Others.DETEKT_FORMATTER)
 }
 
 tasks.withType<Detekt>().configureEach {

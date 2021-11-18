@@ -1,8 +1,8 @@
 object Modules {
 
-    const val app = ":app"
-    const val data = ":data"
-    const val domain = ":domain"
-    const val core = ":core"
-    const val extensions = ":extensions"
+    const val APP = ":app"
+    const val DATA = ":data"
+    const val DOMAIN = ":domain"
+    const val CORE = ":core"
+    const val EXTENSIONS = ":extensions"
 }

@@ -1,3 +1,5 @@
+
+
 buildscript {
     repositories {
         google()
@@ -17,9 +19,10 @@ allprojects {
         }
     }
 
-    plugins.apply(Plugins.ktlint)
-    plugins.apply(Plugins.detekt)
-    plugins.apply(Plugins.versionCheck)
+    plugins.apply(Plugins.KTLINT)
+    plugins.apply(Plugins.DETEKT)
+    plugins.apply(Plugins.VERSION_CHECK)
+    plugins.apply(Plugins.TASKS)
 }
 
 tasks.register("clean", Delete::class.java) {

@@ -1,35 +1,57 @@
 object Versions {
 
-    const val lifecycleRuntime = "2.4.0"
-    const val kotlinStdLib = "1.5.31"
-    const val coreKtx = "1.7.0"
-    const val appCompat = "1.3.1"
-    const val material = "1.4.0"
-    const val legacySupport = "1.0.0"
-    const val coroutines = "1.5.2"
-    const val navigation = "2.3.5"
-    const val hilt = "2.37"
-    const val fragmentKtx = "1.3.6"
-    const val retrofit = "2.9.0"
-    const val okHttp = "4.9.2"
-    const val moshi = "2.9.0"
-    const val chuck = "1.1.0"
-    const val customView = "1.1.0"
-    const val javaxInjection = "1"
-    const val ktlint = "0.43.0"
-    const val detekt = "1.18.1"
-    const val glide = "4.12.0"
-    const val recyclerView = "1.2.1"
-    const val androidSvg = "1.4"
-    const val facebookShimmer = "0.5.0"
-    const val mpChart = "3.1.0"
-    const val splashScreen = "1.0.0-alpha02"
-    const val mockk = "1.12.0"
-    const val truth = "1.1.3"
-    const val jUnitKtx = "1.1.3"
-    const val robolectric = "4.6.1"
-    const val jUnit5 = "5.8.1"
-    const val coroutinesTest = "1.5.2"
-    const val archCoreTesting = "2.1.0"
+    object Google {
+        const val MATERIAL = "1.4.0"
+        const val HILT = "2.37"
+    }
 
+    object Network {
+        const val RETROFIT = "2.9.0"
+        const val OKHTTP = "4.9.2"
+        const val MOSHI = "2.9.0"
+        const val CHUCK = "1.1.0"
+    }
+
+    object Coroutines {
+        const val CORE = "1.5.2"
+    }
+
+    object Kotlin {
+        const val STDLIB = "1.5.31"
+    }
+
+    object Image {
+        const val GLIDE = "4.12.0"
+    }
+
+    object AndroidX {
+        const val CORE_KTX = "1.7.0"
+        const val APPCOMPAT = "1.3.1"
+        const val LEGACY_SUPPORT = "1.0.0"
+        const val CUSTOM_VIEW = "1.1.0"
+        const val FRAGMENT_KTX = "1.3.6"
+        const val LIFECYCLE_RUNTIME = "2.4.0"
+        const val RECYCLER_VIEW = "1.2.1"
+        const val SPLASH_SCREEN = "1.0.0-alpha02"
+        const val JUNIT_KTX = "1.1.3"
+        const val NAVIGATION = "2.3.5"
+    }
+
+    object Others {
+        const val ANDROID_SVG = "1.4"
+        const val FACEBOOK_SHIMMER = "0.5.0"
+        const val MP_CHART = "3.1.0"
+        const val JAVAX_INJECT = "1"
+        const val KTLINT = "0.43.0"
+        const val DETEKT = "1.18.1"
+    }
+
+    object Testing {
+        const val MOCKK = "1.12.0"
+        const val TRUTH = "1.1.3"
+        const val ROBOLECTRIC = "4.6.1"
+        const val COROUTINES = "1.5.2"
+        const val ARCH_CORE = "2.1.0"
+        const val JUNIT5 = "5.8.1"
+    }
 }

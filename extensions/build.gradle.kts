@@ -1,17 +1,17 @@
 plugins {
-    id(Plugins.androidLibrary)
-    kotlin(Plugins.kotlinAndroid)
+    id(Plugins.ANDROID_LIBRARY)
+    kotlin(Plugins.KOTLIN_ANDROID)
 }
 
 android {
-    compileSdk = Configs.compileSdkVersion
-    buildToolsVersion = Configs.buildToolsVersion
+    compileSdk = Configs.COMPILE_SDK_VERSION
+    buildToolsVersion = Configs.BUILD_TOOLS_VERSION
 
     defaultConfig {
-        minSdk = Configs.minSdkVersion
-        targetSdk = Configs.targetSdkVersion
+        minSdk = Configs.MIN_SDK_VERSION
+        targetSdk = Configs.TARGET_SDK_VERSION
 
-        testInstrumentationRunner = Configs.testInstrumentationRunner
+        testInstrumentationRunner = Configs.TEST_INSTRUMENTATION_RUNNER
     }
 
     buildTypes {
@@ -40,6 +40,6 @@ android {
 
 dependencies {
 
-    implementation(Libs.AndroidX.coreKtx)
-    implementation(Libs.AndroidX.appCompat)
+    implementation(Libs.AndroidX.CORE_KTX)
+    implementation(Libs.AndroidX.APPCOMPAT)
 }

@@ -1,13 +1,14 @@
 object Plugins {
 
-    const val androidApplication = "com.android.application"
-    const val androidLibrary = "com.android.library"
-    const val hiltAndroid = "dagger.hilt.android.plugin"
-    const val kotlinParcelize = "kotlin-parcelize"
-    const val kotlinAndroid = "android"
-    const val kotlinKapt = "kapt"
+    const val ANDROID_APPLICATION = "com.android.application"
+    const val ANDROID_LIBRARY = "com.android.library"
+    const val HILT_ANDROID = "dagger.hilt.android.plugin"
+    const val KOTLIN_PARCELIZE = "kotlin-parcelize"
+    const val KOTLIN_ANDROID = "android"
+    const val KOTLIN_KAPT = "kapt"
 
-    const val ktlint = "plugins.ktlint"
-    const val detekt = "plugins.detekt"
-    const val versionCheck = "plugins.version-check"
+    const val KTLINT = "plugins.ktlint"
+    const val DETEKT = "plugins.detekt"
+    const val VERSION_CHECK = "plugins.version-check"
+    const val TASKS = "tasks.tasks"
 }

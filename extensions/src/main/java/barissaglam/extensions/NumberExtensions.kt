@@ -2,7 +2,7 @@ package barissaglam.extensions
 
 import java.math.BigDecimal
 import java.text.NumberFormat
-import java.util.*
+import java.util.Locale
 import kotlin.math.ln
 import kotlin.math.pow
 

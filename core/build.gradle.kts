@@ -1,18 +1,18 @@
 plugins {
-    id(Plugins.androidLibrary)
-    kotlin(Plugins.kotlinAndroid)
-    kotlin(Plugins.kotlinKapt)
+    id(Plugins.ANDROID_LIBRARY)
+    kotlin(Plugins.KOTLIN_ANDROID)
+    kotlin(Plugins.KOTLIN_KAPT)
 }
 
 android {
-    compileSdk = Configs.compileSdkVersion
-    buildToolsVersion = Configs.buildToolsVersion
+    compileSdk = Configs.COMPILE_SDK_VERSION
+    buildToolsVersion = Configs.BUILD_TOOLS_VERSION
 
     defaultConfig {
-        minSdk = Configs.minSdkVersion
-        targetSdk = Configs.targetSdkVersion
+        minSdk = Configs.MIN_SDK_VERSION
+        targetSdk = Configs.TARGET_SDK_VERSION
 
-        testInstrumentationRunner = Configs.testInstrumentationRunner
+        testInstrumentationRunner = Configs.TEST_INSTRUMENTATION_RUNNER
     }
 
     buildTypes {
@@ -41,17 +41,16 @@ android {
 
 dependencies {
 
-    api(project(Modules.extensions))
-    api(Libs.Others.javaxInject)
+    api(project(Modules.EXTENSIONS))
+    api(Libs.Others.JAVAX_INJECT)
 
-    implementation(Libs.AndroidX.fragmentKtx)
-    implementation(Libs.AndroidX.appCompat)
-    implementation(Libs.AndroidX.lifecycleRuntime)
-    implementation(Libs.AndroidX.coreKtx)
-    implementation(Libs.AndroidX.customView)
-    implementation(Libs.AndroidX.recyclerView)
+    implementation(Libs.AndroidX.FRAGMENT_KTX)
+    implementation(Libs.AndroidX.APPCOMPAT)
+    implementation(Libs.AndroidX.LIFECYCLE_RUNTIME)
+    implementation(Libs.AndroidX.CORE_KTX)
+    implementation(Libs.AndroidX.CUSTOM_VIEW)
+    implementation(Libs.AndroidX.RECYCLER_VIEW)
 
-    implementation(Libs.Coroutines.coroutines)
-
-    implementation(Libs.Google.material)
+    implementation(Libs.Coroutines.CORE)
+    implementation(Libs.Google.MATERIAL)
 }
