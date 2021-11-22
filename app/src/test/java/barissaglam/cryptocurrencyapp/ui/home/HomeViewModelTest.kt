@@ -14,7 +14,6 @@ import io.mockk.every
 import io.mockk.mockk
 import io.mockk.unmockkAll
 import io.mockk.verify
-import io.mockk.verifySequence
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runBlockingTest
@@ -22,6 +21,9 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.junit.jupiter.api.assertThrows
+import java.io.IOException
+import java.util.concurrent.TimeoutException
 
 @ExperimentalCoroutinesApi
 class HomeViewModelTest {
@@ -32,26 +34,26 @@ class HomeViewModelTest {
     @get:Rule
     var mainCoroutineRule = MainCoroutineRule()
 
-    private val mockUseCase = mockk<CoinUseCase>()
-    private val mockCoinsData = mockk<CoinsData>()
-    private val homeUiStateSlot = mutableListOf<HomeUiState>()
-    private val homeUiStateObserver = mockk<Observer<HomeUiState>>(relaxed = true)
+    private val mockUseCase: CoinUseCase = mockk()
+    private val mockCoinsData: CoinsData = mockk()
+    private val uiStatObserver: Observer<HomeUiState> = mockk(relaxed = true)
+
+    private val uiStateSlot = mutableListOf<HomeUiState>()
+
     private lateinit var viewModel: HomeViewModel
 
     @Before
     fun setUpBefore() {
         viewModel = HomeViewModel(mockUseCase)
+        viewModel.uiStateData.observeForever(uiStatObserver)
     }
 
     @Test
-    fun `test when called getCoins() and response is success`() = runBlockingTest {
+    fun `when called getCoins(), then response is success`() = runBlockingTest {
         // given
-        viewModel.uiStateData.observeForever(homeUiStateObserver)
-        val successResult = ApiResult.Success(mockCoinsData)
-
         every { mockUseCase(Unit) } returns flow {
             emit(ApiResult.Loading)
-            emit(successResult)
+            emit(ApiResult.Success(mockCoinsData))
         }
 
         // when
@@ -59,38 +61,22 @@ class HomeViewModelTest {
 
         // then
         verify(exactly = 1) { mockUseCase(Unit) }
-        verify(exactly = 2) { homeUiStateObserver.onChanged(capture(homeUiStateSlot)) }
-        confirmVerified(mockUseCase)
+        verify(exactly = 2) { uiStatObserver.onChanged(capture(uiStateSlot)) }
 
         // Test UiState LiveData
-        verifySequence {
-            homeUiStateObserver.onChanged(HomeUiState(ApiResult.Loading))
-            homeUiStateObserver.onChanged(HomeUiState(successResult))
-        }
-
-        homeUiStateSlot[0].also { loadingStateLiveData ->
-            assertThat(loadingStateLiveData.isShowShimmer()).isTrue()
-            assertThat(loadingStateLiveData.isShowContent()).isFalse()
-        }
-
-        homeUiStateSlot[1].also { successStateLiveData ->
-            assertThat(successStateLiveData.isShowShimmer()).isFalse()
-            assertThat(successStateLiveData.isShowContent()).isTrue()
-        }
+        assertThat(uiStateSlot[0].apiResult).isInstanceOf(ApiResult.Loading::class.java)
+        assertThat(uiStateSlot[1].apiResult).isInstanceOf(ApiResult.Success::class.java)
 
         // Test ViewState LiveData
         assertThat(viewModel.viewStateData.getOrAwaitValue().coinData).isEqualTo(mockCoinsData)
     }
 
     @Test
-    fun `test when called getCoins() and response is error`() = runBlockingTest {
+    fun `when called getCoins(), then response is error`() = runBlockingTest {
         // given
-        viewModel.uiStateData.observeForever(homeUiStateObserver)
-        val errorResult = ApiResult.Error(Throwable("this is a test exception."))
-
         every { mockUseCase(Unit) } returns flow {
             emit(ApiResult.Loading)
-            emit(errorResult)
+            emit(ApiResult.Error(IOException("this is a test exception.")))
         }
 
         // when
@@ -98,28 +84,18 @@ class HomeViewModelTest {
 
         // then
         verify(exactly = 1) { mockUseCase(Unit) }
-        verify(exactly = 2) { homeUiStateObserver.onChanged(capture(homeUiStateSlot)) }
+        verify(exactly = 2) { uiStatObserver.onChanged(capture(uiStateSlot)) }
         confirmVerified(mockUseCase)
 
-        // Test UiState LiveData
-        verifySequence {
-            homeUiStateObserver.onChanged(HomeUiState(ApiResult.Loading))
-            homeUiStateObserver.onChanged(HomeUiState(errorResult))
+        assertThat(uiStateSlot[0].apiResult).isInstanceOf(ApiResult.Loading::class.java)
+        assertThat(uiStateSlot[1].apiResult).isInstanceOf(ApiResult.Error::class.java)
+
+        viewModel.errorData.getOrAwaitValue().also { errorViewState ->
+            assertThat(errorViewState.throwable).isInstanceOf(IOException::class.java)
+            assertThat(errorViewState.throwable.message).isEqualTo("this is a test exception.")
         }
 
-        homeUiStateSlot[0].also { loadingStateLiveData ->
-            assertThat(loadingStateLiveData.isShowShimmer()).isTrue()
-            assertThat(loadingStateLiveData.isShowContent()).isFalse()
-        }
-
-        homeUiStateSlot[1].also { errorStateLiveData ->
-            assertThat(errorStateLiveData.isShowShimmer()).isFalse()
-            assertThat(errorStateLiveData.isShowContent()).isFalse()
-        }
-
-        // Test Error LiveData
-        assertThat(viewModel.errorData.getOrAwaitValue().throwable.message)
-            .isEqualTo("this is a test exception.")
+        assertThrows<TimeoutException> { viewModel.viewStateData.getOrAwaitValue() }
     }
 
     @After

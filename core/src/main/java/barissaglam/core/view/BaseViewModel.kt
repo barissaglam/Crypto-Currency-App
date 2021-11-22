@@ -5,34 +5,29 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import barissaglam.core.data.ApiResult
+import barissaglam.core.domain.ErrorPageViewState
 import barissaglam.core.extension.onError
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.launchIn
 
 abstract class BaseViewModel : ViewModel() {
 
-    private val error = MutableLiveData<BaseError>()
-    val errorData: LiveData<BaseError> by ::error
+    private val error = MutableLiveData<ErrorPageViewState>()
+    val errorData: LiveData<ErrorPageViewState> by ::error
 
-    fun <T : Any> sendRequest(
+    fun <T> sendRequest(
         callFunc: () -> Flow<ApiResult<T>>,
-        retryFunc: () -> Unit
+        retryFunc: () -> Unit,
+        errorFunc: (throwable: Throwable) -> Unit = { throwable -> publishError(throwable, retryFunc) }
     ): Flow<ApiResult<T>> {
-        return callFunc.invoke().apply {
-            onError { throwable ->
-                publishError(throwable, retryFunc)
-            }.launch()
+        return callFunc().apply {
+            onError { errorFunc(it) }.launch()
         }
     }
 
-    private fun publishError(throwable: Throwable, retryFunc: () -> Unit) {
-        error.postValue(BaseError(throwable = throwable, retryFunc = retryFunc))
+    open fun publishError(throwable: Throwable, retryFunc: () -> Unit) {
+        error.value = ErrorPageViewState(throwable = throwable, retryFunc = retryFunc)
     }
-
-    data class BaseError(
-        val throwable: Throwable,
-        val retryFunc: () -> Unit
-    )
 
     fun <T> Flow<ApiResult<T>>.launch() {
         launchIn(viewModelScope)

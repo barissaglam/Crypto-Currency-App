@@ -2,7 +2,7 @@ package barissaglam.cryptocurrencyapp.ui.home
 
 import barissaglam.core.data.ApiResult
 
-data class HomeUiState(private val apiResult: ApiResult<*>) {
+data class HomeUiState(val apiResult: ApiResult<*>) {
 
     fun isShowShimmer(): Boolean {
         return apiResult is ApiResult.Loading
@@ -10,13 +10,5 @@ data class HomeUiState(private val apiResult: ApiResult<*>) {
 
     fun isShowContent(): Boolean {
         return apiResult is ApiResult.Success
-    }
-
-    fun qweqweqweqwewq(): String? {
-        if (apiResult is ApiResult.Error) {
-            return apiResult.throwable.message
-        }
-
-        return null
     }
 }

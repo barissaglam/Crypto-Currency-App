@@ -51,7 +51,7 @@ data class CoinDetailViewState(
         }
     }
 
-    private fun getChartBackground(context: Context): Drawable? {
+    fun getChartBackground(context: Context): Drawable? {
         return if (coin.change.isPositive()) {
             ContextCompat.getDrawable(context, R.drawable.background_chart_up)
         } else {

@@ -4,5 +4,6 @@
     <string name="retry">Try Again</string>
     <string name="error_unknown">We are unable to process your request at this time.\nPlease try again!</string>
     <string name="error_connection_not_found">Please check your connection settings and try again.</string>
+    <string name="error_empty_param">I think go back and come again :)</string>
     <string name="error_connection_timeout">Connection timed out!</string>
 </resources>

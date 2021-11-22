@@ -14,6 +14,7 @@ import io.mockk.unmockkAll
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
@@ -37,10 +38,9 @@ class CoinItemViewStateTest {
     }
 
     @Test
-    fun `when change is positive, when called getChangeIcon(), returns ic_green`() {
-        val expectedResult = context.getDrawable(R.drawable.ic_green)
-
+    fun `given change is positive, when called getChangeIcon(), then result should be equal to ic_green`() {
         // given
+        val expectedResult = context.getDrawable(R.drawable.ic_green)
         every { coin.change } returns 1.0
 
         // when
@@ -51,10 +51,9 @@ class CoinItemViewStateTest {
     }
 
     @Test
-    fun `when change is negative, when called getChangeIcon(), returns ic_red`() {
-        val expectedResult = context.getDrawable(R.drawable.ic_red)
-
+    fun `given change is negative, when called getChangeIcon(), then result should be equal to ic_red`() {
         // given
+        val expectedResult = context.getDrawable(R.drawable.ic_red)
         every { coin.change } returns -1.0
 
         // when
@@ -62,6 +61,12 @@ class CoinItemViewStateTest {
 
         // then
         assertThat(actualResult?.constantState).isEqualTo(expectedResult?.constantState)
+    }
+
+    @After
+    fun tearDown() {
+        unmockkAll()
+        clearAllMocks()
     }
 }
 
@@ -76,7 +81,7 @@ class CoinItemViewStateParameterizedTest {
         coinItemViewState = CoinItemViewState(coin)
     }
 
-    @ParameterizedTest(name = "given change:{0}, when called getChangeText(), return {1}")
+    @ParameterizedTest(name = "given change:{0}, when called getChangeText(), then result should be equal:{1}")
     @MethodSource("getChangeTextArguments")
     fun testGetChangeText(given: Double, expected: String) {
         // given
@@ -89,7 +94,7 @@ class CoinItemViewStateParameterizedTest {
         assertThat(actualResult).isEqualTo(expected)
     }
 
-    @ParameterizedTest(name = "given price:{0}, when called getPriceText(), return {1}")
+    @ParameterizedTest(name = "given price:{0}, when called getPriceText(), then result should be equal:{1}")
     @MethodSource("getPriceTextArguments")
     fun testGetPriceText(given: BigDecimal, expected: String) {
         // given
@@ -100,6 +105,12 @@ class CoinItemViewStateParameterizedTest {
 
         // then
         assertThat(actualResult).isEqualTo(expected)
+    }
+
+    @AfterEach
+    fun tearDown() {
+        unmockkAll()
+        clearAllMocks()
     }
 
     companion object {
@@ -122,11 +133,5 @@ class CoinItemViewStateParameterizedTest {
             Arguments.of(BigDecimal(3.1), "$3.10"),
             Arguments.of(BigDecimal(3), "$3.00")
         )
-    }
-
-    @After
-    fun tearDown() {
-        unmockkAll()
-        clearAllMocks()
     }
 }

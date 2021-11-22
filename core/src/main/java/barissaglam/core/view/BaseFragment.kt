@@ -27,8 +27,8 @@ abstract class BaseFragment<DB : ViewDataBinding>(@LayoutRes private val layoutR
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.errorData.observe(viewLifecycleOwner) { baseError ->
-            (activity as? BaseActivity<*>)?.showError(baseError)
+        viewModel.errorData.observe(viewLifecycleOwner) { errorViewState ->
+            (activity as? BaseActivity<*>)?.showError(errorViewState)
         }
     }
 

@@ -2,9 +2,12 @@ package barissaglam.domain.usecase
 
 import barissaglam.core.data.ApiResult
 import barissaglam.core.domain.BaseUseCase
+import barissaglam.core.domain.InvalidParamsException
 import barissaglam.domain.model.Coin
 import barissaglam.domain.repository.CoinDetailRepository
+import barissaglam.extensions.EMPTY_STRING
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class CoinDetailUseCase @Inject constructor(
@@ -12,8 +15,13 @@ class CoinDetailUseCase @Inject constructor(
 ) : BaseUseCase<CoinDetailUseCase.Params, Coin>() {
 
     override fun execute(parameters: Params): Flow<ApiResult<Coin>> {
-        return with(parameters) {
-            repository.getCoinDetail(uuid = uuid, timePeriod = timePeriod)
+        return when (parameters.uuid) {
+            EMPTY_STRING -> {
+                flow { emit(ApiResult.Error(InvalidParamsException())) }
+            }
+            else -> {
+                repository.getCoinDetail(uuid = parameters.uuid, timePeriod = parameters.timePeriod)
+            }
         }
     }
 

@@ -11,7 +11,7 @@ import org.junit.jupiter.params.provider.MethodSource
 
 class HomeUiStateTest {
 
-    @ParameterizedTest(name = "given apiResult:{0}, when called isShowShimmer(), return {1}")
+    @ParameterizedTest(name = "given apiResult:{0}, when called isShowShimmer(), then result should be equal:{1}")
     @MethodSource("isShowShimmerArguments")
     fun testIsShowShimmer(givenApiResult: ApiResult<Any>, expectedResult: Boolean) {
         // given
@@ -24,7 +24,7 @@ class HomeUiStateTest {
         assertThat(actualResult).isEqualTo(expectedResult)
     }
 
-    @ParameterizedTest(name = "given apiResult:{0}, when called isShowContent(), return {1}")
+    @ParameterizedTest(name = "given apiResult:{0}, when called isShowContent(), then result should be equal:{1}")
     @MethodSource("isShowContentArguments")
     fun testIsShowContent(givenApiResult: ApiResult<Any>, expectedResult: Boolean) {
         // given
@@ -51,11 +51,5 @@ class HomeUiStateTest {
             Arguments.of(ApiResult.Error(Throwable()), false),
             Arguments.of(ApiResult.Success(Unit), true)
         )
-    }
-
-    @AfterEach
-    fun tearDown() {
-        unmockkAll()
-        clearAllMocks()
     }
 }

@@ -9,7 +9,7 @@ import androidx.databinding.ViewDataBinding
 import barissaglam.core.R
 import barissaglam.core.databinding.ActivityBaseBinding
 import barissaglam.core.databinding.LayoutErrorBinding
-import barissaglam.core.extension.getErrorMessage
+import barissaglam.core.domain.ErrorPageViewState
 
 abstract class BaseActivity<DB : ViewDataBinding>(@LayoutRes private val layoutRes: Int) : AppCompatActivity() {
     abstract val viewModel: BaseViewModel?
@@ -39,12 +39,12 @@ abstract class BaseActivity<DB : ViewDataBinding>(@LayoutRes private val layoutR
         }
     }
 
-    fun showError(baseError: BaseViewModel.BaseError) {
+    fun showError(errorViewState: ErrorPageViewState) {
         errorBinding.apply {
             rootBinding.error.addView(root)
-            errorText.text = baseError.throwable.getErrorMessage(root.context)
+            errorText.text = errorViewState.getExceptionMessage(root.context)
             retry.setOnClickListener {
-                baseError.retryFunc()
+                errorViewState.retryFunc()
                 hideError()
             }
         }

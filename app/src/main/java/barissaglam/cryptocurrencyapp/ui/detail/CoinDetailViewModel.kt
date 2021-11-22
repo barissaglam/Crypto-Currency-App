@@ -26,8 +26,8 @@ class CoinDetailViewModel @Inject constructor(
     private val viewState = MutableLiveData<CoinDetailViewState>()
     val viewStateData: LiveData<CoinDetailViewState> by ::viewState
 
-    private val uiViewState = MutableLiveData<CoinDetailUiState>()
-    val uiStateData: LiveData<CoinDetailUiState> by ::uiViewState
+    private val uiState = MutableLiveData<CoinDetailUiState>()
+    val uiStateData: LiveData<CoinDetailUiState> by ::uiState
 
     init {
         savedStateHandle.get<String>(CoinDetail.KEY_UUID)?.let { uuid ->
@@ -35,12 +35,13 @@ class CoinDetailViewModel @Inject constructor(
         }
     }
 
+
     fun getCoinDetail(timePeriod: TimePeriod, loadingType: DetailLoadingType) {
         sendRequest(
             callFunc = { coinDetailUseCase(Params(uuid, timePeriod.param)) },
-            retryFunc = { getCoinDetail(timePeriod, loadingType) }
+            retryFunc = { getCoinDetail(timePeriod, loadingType) },
         ).onResultChanged { apiResult ->
-            uiViewState.value = CoinDetailUiState(apiResult, loadingType)
+            uiState.value = CoinDetailUiState(apiResult, loadingType)
         }.onSuccess { coin ->
             viewState.value = CoinDetailViewState(coin, timePeriod)
         }.launch()

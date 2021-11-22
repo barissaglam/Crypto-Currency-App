@@ -58,6 +58,7 @@ object Libs {
         const val ROBOLECTRIC = "org.robolectric:robolectric:${Versions.Testing.ROBOLECTRIC}"
         const val COROUTINES = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.Testing.COROUTINES}"
         const val ARCH_CORE = "androidx.arch.core:core-testing:${Versions.Testing.ARCH_CORE}"
+        const val TURBINE = "app.cash.turbine:turbine:${Versions.Testing.TURBINE}"
 
         object JUnit5 {
             const val JUPITER = "org.junit.jupiter:junit-jupiter:${Versions.Testing.JUNIT5}"

@@ -12,7 +12,7 @@ fun <T, R> ApiResult<T>.map(transform: (T) -> R): ApiResult<R> {
     }
 }
 
-fun <T> Flow<ApiResult<T>>.onResultChanged(action: suspend (ApiResult<T>) -> Unit): Flow<ApiResult<T>> {
+fun <T> Flow<ApiResult<T>>.onResultChanged(action: (ApiResult<T>) -> Unit): Flow<ApiResult<T>> {
     return transform { apiResult ->
         action.invoke(apiResult)
         emit(apiResult)

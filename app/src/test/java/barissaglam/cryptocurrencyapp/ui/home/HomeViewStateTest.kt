@@ -7,9 +7,11 @@ import io.mockk.clearAllMocks
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.unmockkAll
-import org.junit.After
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.MethodSource
 
 class HomeViewStateTest {
 
@@ -22,23 +24,43 @@ class HomeViewStateTest {
     }
 
     // When Then Return
-    @Test
-    fun `when list is empty, when called getItems(), returns emptyList`() {
-        val expectedResult = emptyList<Coin>()
-
+    @ParameterizedTest(name = "given list:{0}, when called getItems(), then list size should be equal:{1}")
+    @MethodSource("getItemsArguments")
+    fun `getItems() size test`(given: List<Coin>, expected: Int) {
         // given
-        every { coinData.coins } returns emptyList()
+        every { coinData.coins } returns given
 
         // when
         val actualResult = homeViewState.getItems()
 
         // then
-        assertThat(actualResult).isEqualTo(expectedResult)
+        assertThat(actualResult).hasSize(expected)
+        assertThat(actualResult).isEqualTo(coinData.coins)
     }
 
-    @After
+    @AfterEach
     fun tearDown() {
         unmockkAll()
         clearAllMocks()
+    }
+
+    companion object {
+        @JvmStatic
+        fun getItemsArguments()= listOf(
+            Arguments.of(emptyList<Coin>(), 0),
+            Arguments.of(
+                listOf(
+                    mockk<Coin>(),
+                    mockk()
+                ), 2
+            ),
+            Arguments.of(
+                listOf(
+                    mockk<Coin>(),
+                    mockk(),
+                    mockk()
+                ), 3
+            )
+        )
     }
 }

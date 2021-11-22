@@ -52,6 +52,7 @@ object Versions {
         const val ROBOLECTRIC = "4.6.1"
         const val COROUTINES = "1.5.2"
         const val ARCH_CORE = "2.1.0"
+        const val TURBINE = "0.7.0"
         const val JUNIT5 = "5.8.1"
     }
 }
