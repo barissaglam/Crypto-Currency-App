@@ -1,4 +1,4 @@
-package barissaglam.cryptocurrencyapp.ui.utils
+package barissaglam.cryptocurrencyapp.utils
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

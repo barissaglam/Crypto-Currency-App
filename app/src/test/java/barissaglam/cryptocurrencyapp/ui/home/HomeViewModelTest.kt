@@ -3,7 +3,7 @@ package barissaglam.cryptocurrencyapp.ui.home
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import barissaglam.core.data.ApiResult
-import barissaglam.cryptocurrencyapp.ui.utils.MainCoroutineRule
+import barissaglam.cryptocurrencyapp.utils.MainCoroutineRule
 import barissaglam.cryptocurrencyapp.utils.extensions.getOrAwaitValue
 import barissaglam.domain.model.CoinsData
 import barissaglam.domain.usecase.CoinUseCase

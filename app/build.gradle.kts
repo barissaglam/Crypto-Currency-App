@@ -101,6 +101,7 @@ dependencies {
     testImplementation(Libs.Testing.COROUTINES)
     testImplementation(Libs.Testing.ARCH_CORE)
     testImplementation(Libs.Testing.TURBINE)
+    testImplementation(Libs.Testing.MOCK_WEBSERVER)
     testRuntimeOnly(Libs.Testing.JUnit5.JUPITER_ENGINE)
     testRuntimeOnly(Libs.Testing.JUnit5.JUPITER_VINTAGE_ENGINE)
 }

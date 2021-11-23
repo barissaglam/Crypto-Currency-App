@@ -7,8 +7,8 @@ import barissaglam.core.data.ApiResult
 import barissaglam.core.domain.InvalidParamsException
 import barissaglam.cryptocurrencyapp.ui.detail.data.DetailLoadingType
 import barissaglam.cryptocurrencyapp.ui.detail.data.TimePeriod
-import barissaglam.cryptocurrencyapp.ui.utils.MainCoroutineRule
 import barissaglam.cryptocurrencyapp.utils.BundleKeys
+import barissaglam.cryptocurrencyapp.utils.MainCoroutineRule
 import barissaglam.cryptocurrencyapp.utils.extensions.getOrAwaitValue
 import barissaglam.domain.model.Coin
 import barissaglam.domain.usecase.CoinDetailUseCase

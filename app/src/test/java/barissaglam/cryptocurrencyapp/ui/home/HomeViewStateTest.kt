@@ -46,20 +46,22 @@ class HomeViewStateTest {
 
     companion object {
         @JvmStatic
-        fun getItemsArguments()= listOf(
+        fun getItemsArguments() = listOf(
             Arguments.of(emptyList<Coin>(), 0),
             Arguments.of(
                 listOf(
                     mockk<Coin>(),
                     mockk()
-                ), 2
+                ),
+                2
             ),
             Arguments.of(
                 listOf(
                     mockk<Coin>(),
                     mockk(),
                     mockk()
-                ), 3
+                ),
+                3
             )
         )
     }

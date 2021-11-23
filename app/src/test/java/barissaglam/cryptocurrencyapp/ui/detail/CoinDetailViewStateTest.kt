@@ -6,7 +6,6 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import barissaglam.cryptocurrencyapp.R
 import barissaglam.cryptocurrencyapp.ui.detail.data.TimePeriod
-import barissaglam.cryptocurrencyapp.ui.home.CoinItemViewState
 import barissaglam.domain.model.Coin
 import com.google.common.truth.Truth.assertThat
 import io.mockk.clearAllMocks
@@ -41,82 +40,81 @@ class CoinDetailViewStateTest {
 
     @Test
     fun `given change is positive, when called getChartBackground(), then result should be equal to background_chart_up`() {
-        //given
+        // given
         val expected = context.getDrawable(R.drawable.background_chart_up)
         every { coinData.change } returns 1.0
 
-        //when
+        // when
         val result = coinDetailViewState.getChartBackground(context)
 
-        //then
+        // then
         assertThat(result?.constantState).isEqualTo(expected?.constantState)
     }
 
     @Test
     fun `given change is negative, when called getChartBackground(), then result should be equal to background_chart_down`() {
-        //given
+        // given
         val expected = context.getDrawable(R.drawable.background_chart_down)
         every { coinData.change } returns -1.0
 
-        //when
+        // when
         val result = coinDetailViewState.getChartBackground(context)
 
-        //then
+        // then
         assertThat(result?.constantState).isEqualTo(expected?.constantState)
     }
 
     @Test
     fun `given change is positive, when called getColor(), then result should be equal to up_green`() {
-        //given
+        // given
         val expected = context.getColor(R.color.up_green)
         every { coinData.change } returns 1.0
 
-        //when
+        // when
         val result = coinDetailViewState.getColor(context)
 
-        //then
+        // then
         assertThat(result).isEqualTo(expected)
     }
 
     @Test
     fun `given change is negative, when called getColor(), then result should be equal to down_red`() {
-        //given
+        // given
         val expected = context.getColor(R.color.down_red)
         every { coinData.change } returns -1.0
 
-        //when
+        // when
         val result = coinDetailViewState.getColor(context)
 
-        //then
+        // then
         assertThat(result).isEqualTo(expected)
     }
 
     @Test
     fun `given change is positive, when called getChangeIcon(), then result should be equal to ic_green`() {
-        //given
+        // given
         val expected = context.getDrawable(R.drawable.ic_green)
         every { coinData.change } returns 1.0
 
-        //when
+        // when
         val result = coinDetailViewState.getChangeIcon(context)
 
-        //then
+        // then
         assertThat(result?.constantState).isEqualTo(expected?.constantState)
     }
 
     @Test
     fun `given change is negative, when called getChangeIcon(), then result should be equal to ic_red`() {
-        //given
+        // given
         val expected = context.getDrawable(R.drawable.ic_red)
-        every { coinData.change } returns - 1.0
+        every { coinData.change } returns -1.0
 
-        //when
+        // when
         val result = coinDetailViewState.getChangeIcon(context)
 
-        //then
+        // then
         assertThat(result?.constantState).isEqualTo(expected?.constantState)
     }
-
 
     @After
     fun tearDown() {
@@ -166,7 +164,7 @@ class CoinDetailViewStateParameterizedTest {
     @MethodSource("isChip24hCheckedArguments")
     fun testIsChip24hChecked(given: TimePeriod, expected: Boolean) {
         // given
-        coinDetailViewState = CoinDetailViewState(coin,given)
+        coinDetailViewState = CoinDetailViewState(coin, given)
 
         // when
         val actualResult = coinDetailViewState.isChip24hChecked()
@@ -179,7 +177,7 @@ class CoinDetailViewStateParameterizedTest {
     @MethodSource("isChip7dCheckedArguments")
     fun testIsChip7dChecked(given: TimePeriod, expected: Boolean) {
         // given
-        coinDetailViewState = CoinDetailViewState(coin,given)
+        coinDetailViewState = CoinDetailViewState(coin, given)
 
         // when
         val actualResult = coinDetailViewState.isChip7dChecked()
@@ -192,7 +190,7 @@ class CoinDetailViewStateParameterizedTest {
     @MethodSource("isChip30dCheckedArguments")
     fun testIsChip30dChecked(given: TimePeriod, expected: Boolean) {
         // given
-        coinDetailViewState = CoinDetailViewState(coin,given)
+        coinDetailViewState = CoinDetailViewState(coin, given)
 
         // when
         val actualResult = coinDetailViewState.isChip30dChecked()
@@ -250,4 +248,3 @@ class CoinDetailViewStateParameterizedTest {
         )
     }
 }
-

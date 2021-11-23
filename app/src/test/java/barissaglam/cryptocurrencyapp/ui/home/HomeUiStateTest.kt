@@ -2,9 +2,6 @@ package barissaglam.cryptocurrencyapp.ui.home
 
 import barissaglam.core.data.ApiResult
 import com.google.common.truth.Truth.assertThat
-import io.mockk.clearAllMocks
-import io.mockk.unmockkAll
-import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource

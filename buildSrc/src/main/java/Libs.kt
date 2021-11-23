@@ -59,6 +59,7 @@ object Libs {
         const val COROUTINES = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.Testing.COROUTINES}"
         const val ARCH_CORE = "androidx.arch.core:core-testing:${Versions.Testing.ARCH_CORE}"
         const val TURBINE = "app.cash.turbine:turbine:${Versions.Testing.TURBINE}"
+        const val MOCK_WEBSERVER = "com.squareup.okhttp3:mockwebserver:${Versions.Testing.MOCK_WEBSERVER}"
 
         object JUnit5 {
             const val JUPITER = "org.junit.jupiter:junit-jupiter:${Versions.Testing.JUNIT5}"

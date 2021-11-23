@@ -35,11 +35,10 @@ class CoinDetailViewModel @Inject constructor(
         }
     }
 
-
     fun getCoinDetail(timePeriod: TimePeriod, loadingType: DetailLoadingType) {
         sendRequest(
             callFunc = { coinDetailUseCase(Params(uuid, timePeriod.param)) },
-            retryFunc = { getCoinDetail(timePeriod, loadingType) },
+            retryFunc = { getCoinDetail(timePeriod, loadingType) }
         ).onResultChanged { apiResult ->
             uiState.value = CoinDetailUiState(apiResult, loadingType)
         }.onSuccess { coin ->

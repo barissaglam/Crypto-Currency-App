@@ -1,52 +1,55 @@
-package barissaglam.cryptocurrencyapp.domain
+package barissaglam.cryptocurrencyapp.data.repository
 
 import app.cash.turbine.test
 import barissaglam.core.data.ApiResult
+import barissaglam.cryptocurrencyapp.data.utils.RepositoryFactory
 import barissaglam.cryptocurrencyapp.utils.MainCoroutineRule
+import barissaglam.data.api.RestApi
+import barissaglam.data.mapper.CoinsDataMapper
 import barissaglam.data.repository.CoinRepositoryImpl
 import barissaglam.domain.model.CoinsData
-import barissaglam.domain.usecase.CoinUseCase
 import com.google.common.truth.Truth.assertThat
+import io.mockk.Called
+import io.mockk.coEvery
+import io.mockk.coVerify
+import io.mockk.coVerifyOrder
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runBlockingTest
-import org.junit.Before
 import org.junit.Rule
-import org.junit.Test
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import java.io.IOException
 
 @ExperimentalCoroutinesApi
-class CoinUseCaseTest {
+class CoinRepositoryImplTest {
 
     @get:Rule
     var mainCoroutineRule = MainCoroutineRule()
 
-    private val repository = mockk<CoinRepositoryImpl>()
-    private lateinit var useCase: CoinUseCase
+    private val api: RestApi = mockk()
+    private val mapper: CoinsDataMapper = mockk()
+    private val domainModel: CoinsData = mockk()
 
-    @Before
+    private lateinit var repository: CoinRepositoryImpl
+
+    @BeforeEach
     fun setUpBefore() {
-        useCase = CoinUseCase(repository)
+        every { mapper.toMapUiModel(any()) } returns domainModel
+        repository = CoinRepositoryImpl(api, mapper)
     }
 
     @Test
-    fun `test success case`() = mainCoroutineRule.runBlockingTest {
+    fun `when called getCoins(), then result should be success`() = mainCoroutineRule.runBlockingTest {
         // given
-        val coinData = mockk<CoinsData>()
-        every { repository.getCoins() } returns flow {
-            emit(ApiResult.Loading)
-            emit(ApiResult.Success(coinData))
-        }
+        coEvery { api.getCoins() } returns RepositoryFactory.getCoinsResponse()
 
         // when
-        val actualResult = useCase(Unit)
+        val actualResult = repository.getCoins()
 
         // then
-        verify(exactly = 1) { repository.getCoins() }
-
         actualResult.test {
             awaitItem().apply {
                 assertThat(this).isNotNull()
@@ -56,28 +59,27 @@ class CoinUseCaseTest {
                 assertThat(this).isNotNull()
                 assertThat(this).isInstanceOf(ApiResult.Success::class.java)
                 this as ApiResult.Success
-                assertThat(data).isEqualTo(coinData)
+                assertThat(data).isInstanceOf(CoinsData::class.java)
             }
             awaitComplete()
+        }
+
+        coVerifyOrder {
+            api.getCoins()
+            mapper.toMapUiModel(any())
         }
     }
 
     @Test
-    fun `test error case`() = mainCoroutineRule.runBlockingTest {
+    fun `when called getCoins(), then result should be error`() = mainCoroutineRule.runBlockingTest {
         // given
-        val exception = IOException("this is a text exception")
-        every { repository.getCoins() } returns flow {
-            emit(ApiResult.Loading)
-            emit(ApiResult.Error(exception))
-        }
+        coEvery { api.getCoins() } throws IOException()
 
         // when
-        val action = useCase(Unit)
+        val actualResult = repository.getCoins()
 
         // then
-        verify(exactly = 1) { repository.getCoins() }
-
-        action.test {
+        actualResult.test {
             awaitItem().apply {
                 assertThat(this).isNotNull()
                 assertThat(this).isInstanceOf(ApiResult.Loading::class.java)
@@ -86,10 +88,12 @@ class CoinUseCaseTest {
                 assertThat(this).isNotNull()
                 assertThat(this).isInstanceOf(ApiResult.Error::class.java)
                 this as ApiResult.Error
-                assertThat(throwable).isEqualTo(exception)
-                assertThat(throwable.message).isEqualTo("this is a text exception")
+                assertThat(throwable).isInstanceOf(IOException::class.java)
             }
             awaitComplete()
         }
+
+        coVerify(exactly = 1) { api.getCoins() }
+        verify { mapper.toMapUiModel(any()) wasNot Called }
     }
 }
