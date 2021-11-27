@@ -1,12 +1,9 @@
-package barissaglam.cryptocurrencyapp.data.mapper
+package barissaglam.data.mapper
 
 import barissaglam.core.data.Mapper
-import barissaglam.cryptocurrencyapp.data.utils.RepositoryFactory
-import barissaglam.cryptocurrencyapp.data.utils.RepositoryNullFactory
-import barissaglam.data.mapper.CoinMapper
-import barissaglam.data.mapper.CoinsDataMapper
-import barissaglam.data.mapper.StatsMapper
 import barissaglam.data.model.CoinsDataModel
+import barissaglam.data.utils.RepositoryFactory
+import barissaglam.data.utils.RepositoryNullFactory
 import barissaglam.domain.model.CoinsData
 import barissaglam.domain.model.Stats
 import com.google.common.truth.Truth.assertThat

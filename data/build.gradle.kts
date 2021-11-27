@@ -1,3 +1,5 @@
+import extensions.implementTestDependencies
+
 plugins {
     id(Plugins.ANDROID_LIBRARY)
     kotlin(Plugins.KOTLIN_ANDROID)
@@ -46,4 +48,6 @@ dependencies {
 
     implementation(Libs.Google.HILT)
     kapt(Libs.Google.HILT_COMPILER)
+
+    implementTestDependencies()
 }

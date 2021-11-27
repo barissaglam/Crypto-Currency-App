@@ -1,4 +1,4 @@
-package barissaglam.cryptocurrencyapp.data.utils
+package barissaglam.data.utils
 
 import barissaglam.core.data.BaseResponse
 import barissaglam.data.model.AllTimeHighModel

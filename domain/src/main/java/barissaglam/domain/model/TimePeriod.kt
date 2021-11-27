@@ -1,4 +1,4 @@
-package barissaglam.cryptocurrencyapp.ui.detail.data
+package barissaglam.domain.model
 
 enum class TimePeriod(val param: String) {
     DAILY("24h"),

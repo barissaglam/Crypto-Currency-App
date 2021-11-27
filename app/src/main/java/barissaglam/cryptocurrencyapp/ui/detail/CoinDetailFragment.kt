@@ -11,10 +11,10 @@ import barissaglam.cryptocurrencyapp.extensions.observe
 import barissaglam.cryptocurrencyapp.ui.detail.data.DetailLoadingType
 import barissaglam.cryptocurrencyapp.ui.detail.data.DetailLoadingType.PROGRESS
 import barissaglam.cryptocurrencyapp.ui.detail.data.DetailLoadingType.SHIMMER
-import barissaglam.cryptocurrencyapp.ui.detail.data.TimePeriod
-import barissaglam.cryptocurrencyapp.ui.detail.data.TimePeriod.DAILY
-import barissaglam.cryptocurrencyapp.ui.detail.data.TimePeriod.MONTHLY
-import barissaglam.cryptocurrencyapp.ui.detail.data.TimePeriod.WEEKLY
+import barissaglam.domain.model.TimePeriod
+import barissaglam.domain.model.TimePeriod.DAILY
+import barissaglam.domain.model.TimePeriod.MONTHLY
+import barissaglam.domain.model.TimePeriod.WEEKLY
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

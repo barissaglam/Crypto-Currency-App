@@ -4,6 +4,7 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 tasks.withType<Test> {
+    useJUnitPlatform()
     testLogging {
         // set options for log level LIFECYCLE
         events = setOf(

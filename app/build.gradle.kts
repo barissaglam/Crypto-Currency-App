@@ -1,3 +1,5 @@
+import extensions.implementTestDependencies
+
 plugins {
     id(Plugins.ANDROID_APPLICATION)
     id(Plugins.HILT_ANDROID)
@@ -52,13 +54,6 @@ android {
     }
 }
 
-tasks.withType<Test> {
-    useJUnitPlatform()
-    testLogging {
-        events("passed", "skipped", "failed")
-    }
-}
-
 dependencies {
 
     implementation(project(Modules.CORE))
@@ -93,15 +88,5 @@ dependencies {
     implementation(Libs.Others.FACEBOOK_SHIMMER)
     implementation(Libs.Others.MP_CHART)
 
-    testImplementation(Libs.Testing.TRUTH)
-    testImplementation(Libs.Testing.MOCKK)
-    testImplementation(Libs.Testing.ROBOLECTRIC)
-    testImplementation(Libs.Testing.JUnit5.JUPITER)
-    testImplementation(Libs.Testing.JUnit5.JUPITER_API)
-    testImplementation(Libs.Testing.COROUTINES)
-    testImplementation(Libs.Testing.ARCH_CORE)
-    testImplementation(Libs.Testing.TURBINE)
-    testImplementation(Libs.Testing.MOCK_WEBSERVER)
-    testRuntimeOnly(Libs.Testing.JUnit5.JUPITER_ENGINE)
-    testRuntimeOnly(Libs.Testing.JUnit5.JUPITER_VINTAGE_ENGINE)
+    implementTestDependencies()
 }

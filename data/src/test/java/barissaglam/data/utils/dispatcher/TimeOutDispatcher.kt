@@ -1,4 +1,4 @@
-package barissaglam.cryptocurrencyapp.data.utils.dispatcher
+package barissaglam.data.utils.dispatcher
 
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse

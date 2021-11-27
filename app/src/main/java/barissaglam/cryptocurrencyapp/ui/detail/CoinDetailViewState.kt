@@ -5,13 +5,13 @@ import android.graphics.drawable.Drawable
 import android.text.SpannableString
 import androidx.core.content.ContextCompat
 import barissaglam.cryptocurrencyapp.R
-import barissaglam.cryptocurrencyapp.ui.detail.data.TimePeriod
 import barissaglam.cryptocurrencyapp.utils.bold
 import barissaglam.cryptocurrencyapp.utils.color
 import barissaglam.cryptocurrencyapp.utils.normal
 import barissaglam.cryptocurrencyapp.utils.plus
 import barissaglam.cryptocurrencyapp.utils.spannable
 import barissaglam.domain.model.Coin
+import barissaglam.domain.model.TimePeriod
 import barissaglam.extensions.formatWithSuffix
 import barissaglam.extensions.isPositive
 import barissaglam.extensions.toCurrency

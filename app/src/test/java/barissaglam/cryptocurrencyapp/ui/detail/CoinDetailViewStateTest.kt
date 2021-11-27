@@ -5,8 +5,8 @@ import android.os.Build
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import barissaglam.cryptocurrencyapp.R
-import barissaglam.cryptocurrencyapp.ui.detail.data.TimePeriod
 import barissaglam.domain.model.Coin
+import barissaglam.domain.model.TimePeriod
 import com.google.common.truth.Truth.assertThat
 import io.mockk.clearAllMocks
 import io.mockk.every

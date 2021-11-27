@@ -7,8 +7,8 @@ import barissaglam.core.extension.onResultChanged
 import barissaglam.core.extension.onSuccess
 import barissaglam.core.view.BaseViewModel
 import barissaglam.cryptocurrencyapp.ui.detail.data.DetailLoadingType
-import barissaglam.cryptocurrencyapp.ui.detail.data.TimePeriod
 import barissaglam.cryptocurrencyapp.utils.BundleKeys.CoinDetail
+import barissaglam.domain.model.TimePeriod
 import barissaglam.domain.usecase.CoinDetailUseCase
 import barissaglam.domain.usecase.CoinDetailUseCase.Params
 import barissaglam.extensions.EMPTY_STRING

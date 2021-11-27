@@ -1,11 +1,11 @@
-package barissaglam.cryptocurrencyapp.domain
+package barissaglam.domain
 
 import app.cash.turbine.test
 import barissaglam.core.data.ApiResult
-import barissaglam.cryptocurrencyapp.utils.MainCoroutineRule
-import barissaglam.data.repository.CoinRepositoryImpl
 import barissaglam.domain.model.CoinsData
+import barissaglam.domain.repository.CoinRepository
 import barissaglam.domain.usecase.CoinUseCase
+import barissaglam.domain.utils.MainCoroutineRule
 import com.google.common.truth.Truth.assertThat
 import io.mockk.every
 import io.mockk.mockk
@@ -24,7 +24,7 @@ class CoinUseCaseTest {
     @get:Rule
     var mainCoroutineRule = MainCoroutineRule()
 
-    private val repository = mockk<CoinRepositoryImpl>()
+    private val repository = mockk<CoinRepository>()
     private lateinit var useCase: CoinUseCase
 
     @Before

@@ -1,12 +1,11 @@
-package barissaglam.cryptocurrencyapp.data.repository
+package barissaglam.data.repository
 
 import app.cash.turbine.test
 import barissaglam.core.data.ApiResult
-import barissaglam.cryptocurrencyapp.data.utils.RepositoryFactory
-import barissaglam.cryptocurrencyapp.utils.MainCoroutineRule
 import barissaglam.data.api.RestApi
 import barissaglam.data.mapper.CoinMapper
-import barissaglam.data.repository.CoinDetailRepositoryImpl
+import barissaglam.data.utils.MainCoroutineRule
+import barissaglam.data.utils.RepositoryFactory
 import barissaglam.domain.model.Coin
 import com.google.common.truth.Truth.assertThat
 import io.mockk.Called

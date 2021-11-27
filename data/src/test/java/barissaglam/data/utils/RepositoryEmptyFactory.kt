@@ -1,4 +1,4 @@
-package barissaglam.cryptocurrencyapp.data.utils
+package barissaglam.data.utils
 
 import barissaglam.core.data.BaseResponse
 import barissaglam.data.model.AllTimeHighModel
@@ -8,7 +8,7 @@ import barissaglam.data.model.CoinsDataModel
 import barissaglam.data.model.StatsModel
 import barissaglam.data.model.SupplyModel
 
-object RepositoryNullFactory {
+object RepositoryEmptyFactory {
 
     fun getCoinsResponse(): BaseResponse<CoinsDataModel> = BaseResponse(
         status = "test_status",
@@ -21,52 +21,52 @@ object RepositoryNullFactory {
     )
 
     fun getCoinsDataModel() = CoinsDataModel(
-        stats = null,
-        coins = null
+        stats = getStatsModel(),
+        coins = emptyList()
     )
 
     fun getStatsModel() = StatsModel(
-        total = null,
-        totalCoins = null,
-        totalMarkets = null,
-        totalExchanges = null,
-        totalMarketCap = null,
-        total24hVolume = null
+        total = 0,
+        totalCoins = 0,
+        totalMarkets = 0,
+        totalExchanges = 0,
+        totalMarketCap = "",
+        total24hVolume = ""
     )
 
     fun getCoinModel() = CoinModel(
-        uuid = null,
-        symbol = null,
-        name = null,
-        description = null,
-        color = null,
-        iconUrl = null,
-        websiteUrl = null,
-        supply = null,
-        marketCap = null,
-        price = null,
-        btcPrice = null,
-        listedAt = null,
-        change = null,
-        rank = null,
-        sparkline = null,
-        allTimeHigh = null,
-        coinRankingUrl = null,
-        volume24h = null
+        uuid = "",
+        symbol = "",
+        name = "",
+        description = "",
+        color = "",
+        iconUrl = "",
+        websiteUrl = "",
+        supply = getSupplyModel(),
+        marketCap = "",
+        price = "",
+        btcPrice = "",
+        listedAt = 0,
+        change = "",
+        rank = 0,
+        sparkline = emptyList(),
+        allTimeHigh = getAllTimeHigh(),
+        coinRankingUrl = "",
+        volume24h = ""
     )
 
     fun getSupplyModel() = SupplyModel(
-        confirmed = null,
-        total = null,
-        circulating = null
+        confirmed = false,
+        "",
+        ""
     )
 
     fun getAllTimeHigh() = AllTimeHighModel(
-        price = null,
-        timestamp = null
+        price = "",
+        timestamp = 0
     )
 
     fun getCoinDetailModel() = CoinDetailDataModel(
-        coin = null
+        coin = getCoinModel()
     )
 }

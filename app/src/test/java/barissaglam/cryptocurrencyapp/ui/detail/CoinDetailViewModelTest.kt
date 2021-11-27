@@ -6,11 +6,11 @@ import androidx.lifecycle.SavedStateHandle
 import barissaglam.core.data.ApiResult
 import barissaglam.core.domain.InvalidParamsException
 import barissaglam.cryptocurrencyapp.ui.detail.data.DetailLoadingType
-import barissaglam.cryptocurrencyapp.ui.detail.data.TimePeriod
 import barissaglam.cryptocurrencyapp.utils.BundleKeys
 import barissaglam.cryptocurrencyapp.utils.MainCoroutineRule
 import barissaglam.cryptocurrencyapp.utils.extensions.getOrAwaitValue
 import barissaglam.domain.model.Coin
+import barissaglam.domain.model.TimePeriod
 import barissaglam.domain.usecase.CoinDetailUseCase
 import com.google.common.truth.Truth.assertThat
 import io.mockk.clearAllMocks
@@ -134,7 +134,6 @@ class CoinDetailViewModelTest {
         }
         viewModel.errorData.getOrAwaitValue().also { errorViewState ->
             assertThat(errorViewState.throwable).isInstanceOf(InvalidParamsException::class.java)
-            assertThat(errorViewState.throwable.message).isEqualTo("this is a test exception.")
         }
         assertThrows<TimeoutException> { viewModel.viewStateData.getOrAwaitValue() }
     }

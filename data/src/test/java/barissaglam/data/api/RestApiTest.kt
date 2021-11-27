@@ -1,14 +1,13 @@
-package barissaglam.cryptocurrencyapp.data.api
+package barissaglam.data.api
 
 import barissaglam.core.data.BaseResponse
-import barissaglam.cryptocurrencyapp.data.utils.dispatcher.ErrorDispatcher
-import barissaglam.cryptocurrencyapp.data.utils.dispatcher.SuccessDispatcher
-import barissaglam.cryptocurrencyapp.data.utils.dispatcher.TimeOutDispatcher
-import barissaglam.data.api.RestApi
 import barissaglam.data.model.CoinDetailDataModel
 import barissaglam.data.model.CoinModel
 import barissaglam.data.model.CoinsDataModel
 import barissaglam.data.model.StatsModel
+import barissaglam.data.utils.dispatcher.ErrorDispatcher
+import barissaglam.data.utils.dispatcher.SuccessDispatcher
+import barissaglam.data.utils.dispatcher.TimeOutDispatcher
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
 import okhttp3.OkHttpClient
@@ -50,9 +49,9 @@ class RestApiTest {
     }
 
     /*
-        |<<<<<<<<<<<<<<<<<<<<<<|
+        +----------------------+
         |    Coins List Test   |
-        |>>>>>>>>>>>>>>>>>>>>>>|
+        +----------------------+
      */
 
     @Test
@@ -115,9 +114,9 @@ class RestApiTest {
     }
 
     /*
-        |<<<<<<<<<<<<<<<<<<<<<<|
-        |   Coin Detail Test   |
-        |>>>>>>>>>>>>>>>>>>>>>>|
+        +-----------------------+
+        |    Coin Detail Test   |
+        +-----------------------+
      */
 
     @Test

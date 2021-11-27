@@ -1,10 +1,9 @@
-package barissaglam.cryptocurrencyapp.data.mapper
+package barissaglam.data.mapper
 
 import barissaglam.core.data.Mapper
-import barissaglam.cryptocurrencyapp.data.utils.RepositoryFactory
-import barissaglam.cryptocurrencyapp.data.utils.RepositoryNullFactory
-import barissaglam.data.mapper.CoinMapper
 import barissaglam.data.model.CoinModel
+import barissaglam.data.utils.RepositoryFactory
+import barissaglam.data.utils.RepositoryNullFactory
 import barissaglam.domain.model.Coin
 import com.google.common.truth.Truth.assertThat
 import org.junit.jupiter.api.BeforeEach

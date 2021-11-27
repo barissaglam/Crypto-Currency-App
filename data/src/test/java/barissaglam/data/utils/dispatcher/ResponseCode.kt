@@ -1,4 +1,4 @@
-package barissaglam.cryptocurrencyapp.data.utils.dispatcher
+package barissaglam.data.utils.dispatcher
 
 object ResponseCode {
     const val OK = 200

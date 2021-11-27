@@ -1,3 +1,5 @@
+import extensions.implementTestDependencies
+
 plugins {
     id(Plugins.ANDROID_LIBRARY)
     id(Plugins.KOTLIN_PARCELIZE)
@@ -41,4 +43,6 @@ android {
 
 dependencies {
     implementation(project(Modules.CORE))
+
+    implementTestDependencies()
 }
