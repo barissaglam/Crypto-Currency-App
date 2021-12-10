@@ -37,8 +37,8 @@ Coin Stalker App is an android application that displays current crypto currency
 | Detail | <img src="art/detail-light.png" width="250"> |<img src="art/detail-dark.png" width="250"> |
 
 ## Others
-- I was inspired by https://github.com/furkanaskin/CoinStalker for project name. Thanks :)
-- I was inspired by https://github.com/mertceyhan/bitcoin-market-android while doing the project. Thanks :)
+- I was inspired by [Coin Stalker](https://github.com/furkanaskin/CoinStalker) for project name. Thanks :)
+- I was inspired by [Bitcoin Market](https://github.com/mertceyhan/bitcoin-market-android) while doing the project. Thanks :)
 - App logo from [Freepik](https://www.freepik.com/free-vector/gradient-c-logo-template-collection_13403316.htm#page=1&query=c%20logo&position=0&from_view=search)
 - Error page image from [Freepik](https://www.freepik.com/free-vector/feeling-sorry-concept-illustration_10117948.htm#page=1&query=feeling%20sorry&position=0&from_view=search)
 - Powered by [CoinRanking](https://developers.coinranking.com)
